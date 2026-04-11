@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figurinhas da Copa do Mundo</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav_image">
+                <img src="assets/img/logo/logo_Soft_King.png" alt="Logo SoftKing" id="logo"><a href="index.html"></a>
+            </div>
+
+            <div class="nav_actions">
+                <ul>
+                    <button class="navbar"><a href="index.html">Home</a></button>
+                </ul>
+                <ul>
+                    <button class="navbar"><a href="#">Perfil</a></button>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section>
+        <div id="produtos" class="container">
+            <section class="produto">
+                <article class="card">
+                    <div class="card_header">
+                        <header>
+                            <h2>Álbum de Figurinhas</h2>
+                        </header>
+                    </div>
+                    <div class="card_image">
+                        <img src="assets/img/album_capa_dura.webp" alt="Pacote de Figurinhas do Brasil">
+                    </div>
+                    <div class="card_description">
+                        <div class="card_description_header">
+                            <h4>Descrição:</h4>
+                        </div>
+                        <div class="card_description_body">
+                            <p>Álbum de figurinhas da copa do mundo 2026 - Capa Dura Ouro</p>
+                        </div>
+                    </div>
+
+                    <div class="card_footer">
+                        <div class="card_price">
+                            <span><h2><b>R$ 79,90</b></h2></span>
+                        </div>
+                        <div class="actions">
+                            <button class="actions" onclick="comprar()">
+                                Comprar
+                            </button>
+                            <button class="actions" onclick="adicionarAoCarrinho()">
+                                Adicionar ao carrinho
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="produto">
+                <article class="card">
+                    <div class="card_header">
+                        <header>
+                            <h2>Brasil</h2>
+                        </header>
+                    </div>
+                    
+                    <div class="card_image">
+                        <img src="assets/img/camisaBrasil.png" alt="Camisa da Seleção Brasileira">
+                    </div>
+
+                    <div class="card_description">
+                        <div class="card_description_header">
+                            <h4>Descrição:</h4>
+                        </div>
+                        <div class="card_description_body">
+                            <p>Camisa da Seleção Brasileira</p>
+                            <p><b>Tamanhos:</b> P, M, G e GG</p>
+                        </div>
+                    </div>
+
+                    <div class="card_footer">
+                        <div class="card_price">
+                            <span><h2><b>R$ 459,90</b></h2></span>
+                        </div>
+                        <div class="actions">
+                            <button class="actions" onclick="comprar()">Comprar</button>
+                            <button class="actions" onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="produto">
+                <article class="card">
+                    <div class="card_header">
+                        <h2>Uruguai</h2>
+                    </div>
+                    <div class="card_image">
+                        <img src="assets/img/camisaUruguai.png" alt="Camisa da Seleção do Uruguai">
+                    </div>
+                    
+                    <div class="card_description">
+                        <div class="card_description_header">
+                            <h4>Descrição:</h4>
+                        </div>
+                        <div class="card_description_body">
+                            <p>Camisa da Seleção do Uruguai</p>
+                            <p><b>Tamanhos:</b>P, M, G, GG e G1.</p>
+                        </div>
+                    </div>
+
+                    <div class="card_footer">
+                        <div class="card_price">
+                            <span><h2><b>R$ 257,99</b></h2></span>
+                        </div>
+                        <div class="actions">
+                            <button class="actions" onclick="comprar()">Comprar</button>
+                            <button class="actions" onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+        </div>
+    </section>
+
+    <script>
+        function comprar() {
+            var confirmar = confirm("Desejas realizar a compra?");
+            if(confirmar) {
+                alert("Compra realizada com sucesso!");
+            }else {
+                alert("Compra cancelada.");
+            }
+        }
+
+        function adicionarAoCarrinho() {
+            var confirmar = confirm("Queres adicionar o produto ao carrinho?");
+            if(confirmar) {
+                alert("Produto adicionado ao carrinho com sucesso!");
+            }else {
+                alert("Adição cancelada.");
+            }
+        }
+    </script>
+
+</body>
+</html>
