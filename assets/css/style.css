@@ -6,7 +6,7 @@ body {
 article {
     width: 550px;
     padding: 40px;
-    height: 990px;
+    height: 880px;
 }
 
 #produtos {
@@ -14,6 +14,19 @@ article {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+.produto {
+    box-shadow: 1px 2px 10px 1px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s;
+    border-radius: 20px;
+}
+
+.produto:hover {
+    transform: translate3d(-1px, 15px, 30px);
+    box-shadow: 3px 4px 12px 3px rgba(0, 0, 0, 0.6);
 }
 
 #navbar .container{
@@ -75,7 +88,7 @@ button.navbar:hover {
     background-color: rgb(200, 30, 0);
     width: 140px;
     height: 60px;
-    box-shadow: 12px 10px black;
+    box-shadow: 6px 8px black;
     text-transform: capitalize;
 }
 
@@ -96,6 +109,7 @@ button.navbar:hover {
     font-size: 20px;
     font-family: 'Times New Roman', Times, serif;
 }
+
 
 .actions {
     display: flex;
@@ -143,7 +157,7 @@ button.actions:hover {
 }
 
 #presentation:hover {
-    box-shadow: 2px 1px 1px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.2);
     height: 180px;
 }
 
@@ -161,7 +175,7 @@ button.actions:hover {
 }
 
 #history .container {
-    box-shadow: 2px 1px 3px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 1px 3px 1px rgba(0, 0, 0, 0.4);
     padding: 10px;
     border-radius: 10px;
     text-align: center;
@@ -177,7 +191,7 @@ button.actions:hover {
 .body {
     opacity: 0;
     visibility: hidden;
-    transition: all 1s ease;
+    transition: all 0.6s ease;
 }
 
 #history .container:hover {
