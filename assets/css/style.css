@@ -4,7 +4,7 @@ body {
 }
 
 article {
-    width: 550px;
+    width: 500px;
     padding: 40px;
     height: 880px;
 }
@@ -144,7 +144,7 @@ button.actions:hover {
 
 #presentation {
     text-align: center;
-    transition: all 0.5s ease;
+    transition: all 0.8s ease;
     font-size: 25px;
     height: 90px;
 }
