@@ -1,3 +1,9 @@
+let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+function salvarCarrinho() {
+    localStorage.setItem('carrinho', stringify(carrinho));
+}
+
 let produtos = [
     {
         id: 1,
@@ -129,43 +135,166 @@ let produtos = [
         categoria: "camisa",
         estoque: 5000
     }
-
+    
 ];
+
+
+
+function renderizarProdutos() {
+    const container = document.getElementById('visualizacao');
+    
+    if (!container) return;
+
+    container.innerHTML = '';
+    
+    produtos.forEach (produto => {
+        
+        if(!produto.ativo) return;
+
+        const produtoHTML = `
+        <section class="produto">
+                <article class="card">
+                <div class="card_header">
+                        <header>
+                            <h2>${produto.nome}</h2>
+                            </header>
+                            </div>
+                            <div class="card_image">
+                            <img src="assets/img/${getImagePorNome(produto.nome)}" alt="${produto.nome}">
+                            </div>
+                            <div class="card_description">
+                            <div class="card_description_header">
+                            <h4>Descrição:</h4>
+                            </div>
+                        <div class="card_description_body">
+                            <p>${produto.descricao}</p>
+                            ${produto.tamanho ? `<p><b>Tamanhos:</b> ${produto.tamanho.join(', ')}</p>` : ''}
+                        </div>
+                        </div>
+
+                        <div class="card_footer">
+                        <div class="card_price">
+                            <span><h2><b>R$ ${produto.preco.toFixed(2).replace('.', ',')}</b></h2></span>
+                            </div>
+                        <div class="actions">
+                        <button class="actions" onclick="comprar(${produto.id})">
+                                Comprar
+                                </button>
+                                <button class="actions" onclick="adicionarAoCarrinho(${produto.id})">
+                                Adicionar ao carrinho
+                                </button>
+                                </div>
+                                </div>
+                                </article>
+            </section>
+        `;
+
+        container.innerHTML += produtoHTML;
+    });
+}
+
+function getImagePorNome(nome) {
+    const images = {
+        'Álbum de Figurinhas': 'album_capa_dura.webp',
+        'Brasil': 'camisaBrasil.avif',
+        'Uruguai': 'camisaUruguai.png',
+        'Argentina': 'camisaArgentina.avif',
+        'Alemanha': 'camisaAlemanha.avif',
+        'Espanha': 'camisaEspanha.avif',
+        'EUA': 'camisaEUA.avif',
+        'Itália': 'camisaItalia.jpg',
+        'Japão': 'camisaJapan.avif',
+        'México': 'camisaMexico.avif',
+        'Portugal': 'camisaPortugal.avif',
+        'Inglaterra': 'camisaInglaterra.avif'
+    };
+
+    return images[nome] || 'placeholder.jpg';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    renderizarProdutos();
+})
+
 
 function comprar() {
     Swal.fire ({
-    title: 'Tens certeza?',
-    text: 'Você comprará o produto!',
-    icon: 'question',
-    showCancelButton: true,
-    confirmButtonColor: '#108926',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Comprar',
-    cancelButtonText: 'Cancelar',
-    }).then((result) =>  {
-        if(result.isConfirmed) {
-            Swal.fire ({
-                title: 'Perfeito!',
-                text: 'Direcionando para a finalização da compra',
-                icon: 'success',
-                showConfirmButton: false
-            })
-            setTimeout(() => {
-                window.location.href='finalizacaoCompra.html';
-            }, 1500);
-        }
+        title: 'Perfeito!',
+        text: 'Preparando tudo para sua compra...',
+        icon: 'success',
     })
+    setTimeout(() => {
+        window.location.href='finalizacaoCompra.html';
+    }, 1500);
 }
 
-function adicionarAoCarrinho() {
-    Swal.fire ({
-        title: 'Tens certeza?',
-        text: 'Você adicionará o produto ao carrinho!',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#108926',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Adicionar',
-        cancelButtonText: 'Cancelar'
-    })
+function adicionarAoCarrinho(idProduto) {
+    let produtoEncontrado = false;
+
+    for(let i=0;i<produtos.length;i++) {
+        if(parseInt(idProduto)==produtos[i].id && produtos[i].estoque > 0 && produtos[i].ativo==true) {
+            produtoEncontrado = true;
+            carrinho.push(produtos[i]);
+            Swal.fire ({
+                title: 'Produto adicionado!',
+                text: 'Produto adicionado com sucesso.',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1000
+            }).then(() => {
+                
+                Swal.fire ({
+                        title: 'O que desejas fazer?',
+                        text: '',
+                        showCancelButton: true,
+                        confirmButtonText: 'Continuar comprando',
+                        cancelButtonText: 'Ir para o carrinho',
+                        confirmButtonColor: 'rgb(0, 168, 0)',
+                        cancelButtonColor: 'rgb(0, 150, 0)'
+                    }).then((result) => {
+                        if(!result.isConfirmed) {
+                            window.location.href='carrinho.html';
+                        }
+                    })
+            })
+            break;
+        }
+    }
+
+    if(!produtoEncontrado){
+        Swal.fire ({
+            title: 'Erro!',
+            text: 'Produto fora de estoque ou inativo.',
+            icon: 'error'
+        });
+    }
+}
+
+/* function produtosCarrinho() {
+    const produtoHTML = '';
+
+    if(carrinho.length==0) {
+        avisoHTML = `
+            <div class="container" id="carrinho">
+                <div class="aviso">
+                    <h4>Você não possui produtos em seu carrinho!</h4>
+                </div>
+                <div class="carrinhoAction">
+                    <button onclick=window.location.href='produtos.html'">Voltar a comprar</button>
+                </div.
+            </div>
+        `;
+    } else {
+        for(let i=0;i<carrinho.length;i++) {
+            let cardHTML = `
+
+        `;
+
+        produtoHTML += cardHTML;
+        }
+    }
+} */
+
+function limparCarrinho() {
+    carrinho = [];
 }

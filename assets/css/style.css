@@ -9,7 +9,7 @@ article {
     height: 880px;
 }
 
-#produtos {
+#visualizacao {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -187,6 +187,9 @@ button.actions:hover {
     font-size: 25px;
 }
 
+#produtos h3 {
+    font-size: 30px;
+}
 
 .body {
     opacity: 0;
@@ -217,3 +220,51 @@ button.actions:hover {
     font-size: 20px;
 }
 
+#produtos.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 90px;
+    box-shadow: 2px 1px 3px 1px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+
+.action button{
+    cursor: pointer;
+    font-size: 30px;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    transition: all 0.7s ease;
+}
+
+.action button:hover {
+    transform: scale(1.2);
+}
+
+#bodyHeader {
+    height: 100px;
+    box-shadow: 2px 1px 3px 1px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 20px;
+}
+
+.clearCarrinho{
+    height: 40px;
+    width: 150px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(215, 0, 0);
+    transition: all 0.4s ease;
+    box-shadow: 3px 4px 2px 1px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.clearCarrinho:hover {
+    background-color: rgb(245, 0, 0);
+    transform: scale(1.09);
+    box-shadow: 3px 4px 3px 4px rgba(0, 0, 0, 0.3);
+}
