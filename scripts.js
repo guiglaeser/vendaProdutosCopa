@@ -67,8 +67,69 @@ let produtos = [
     {
         id: 7,
         nome: "EUA",
-        descricao: ""
+        descricao: "Camisa da Seleção Americana",
+        tamanho: ['P', 'M', 'G'],
+        ativo: true,
+        preco: 349.99,
+        categoria: "camisa",
+        estoque: 4000
+    },
+
+    {
+        id: 8,
+        nome: "Itália",
+        descricao: "Camisa da Seleção Italiana",
+        tamanho: ['P', 'M', 'G', 'GG'],
+        ativo: true,
+        preco: 459.99,
+        categoria: "camisa",
+        estoque: 10000
+    },
+
+    {
+        id: 9,
+        nome: "Japão",
+        descricao: "Camisa da Seleção Japonesa",
+        tamanho: ['P', 'M'],
+        ativo: true,
+        preco: 349.90,
+        categoria: "camisa",
+        estoque: 2000
+    },
+
+    {
+        id: 10,
+        nome: "México",
+        descricao: "Camisa da Seleção Mexicana",
+        tamanho: ['P', 'M', 'G'],
+        ativo: true,
+        preco: 329.90,
+        categoria: "camisa",
+        estoque: 1450
+    },
+
+    {
+        id: 11,
+        nome: "Portugal",
+        descricao: "Camisa da Seleção Portuguesa",
+        tamanho: ['P', 'M', 'G', 'GG'],
+        ativo: true,
+        preco: 299.99,
+        categoria: "camisa",
+        estoque: 4000
+    },
+
+    {
+        id: 12,
+        nome: "Inglaterra",
+        descricao: "Camisa da Seleção Inglesa",
+        tamanho: ['P', 'M', 'G'],
+        ativo: true,
+        preco: 359.99,
+        categoria: "camisa",
+        estoque: 5000
     }
+
 ];
 
 function comprar() {
@@ -86,11 +147,12 @@ function comprar() {
             Swal.fire ({
                 title: 'Perfeito!',
                 text: 'Direcionando para a finalização da compra',
-                icon: 'like',
-                confirmButtonColor: '#108926',
-                confirmButtonText: 'Ok',
+                icon: 'success',
+                showConfirmButton: false
             })
-            window.location.href='finalizacaoCompra.html';
+            setTimeout(() => {
+                window.location.href='finalizacaoCompra.html';
+            }, 1500);
         }
     })
 }
