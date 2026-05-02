@@ -1,10 +1,10 @@
-let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+let carrinho = JSON.parse(sessionStorage.getItem('carrinho')) || [];
 
 function salvarCarrinho() {
-    localStorage.setItem('carrinho', stringify(carrinho));
+    sessionStorage.setItem('carrinho', JSON.stringify(carrinho));
 }
 
-let produtos = [
+var produtos = [
     {
         id: 1,
         nome: "Álbum de Figurinhas",
@@ -220,12 +220,15 @@ document.addEventListener('DOMContentLoaded', function() {
 function comprar() {
     Swal.fire ({
         title: 'Perfeito!',
-        text: 'Preparando tudo para sua compra...',
+        text: `Preparando tudo para sua compra...
+            Direcionando para a página de finalização de compra.
+        `,
         icon: 'success',
+        showConfirmButton: false
     })
     setTimeout(() => {
         window.location.href='finalizacaoCompra.html';
-    }, 1500);
+    }, 1900);
 }
 
 function adicionarAoCarrinho(idProduto) {
@@ -235,6 +238,7 @@ function adicionarAoCarrinho(idProduto) {
         if(parseInt(idProduto)==produtos[i].id && produtos[i].estoque > 0 && produtos[i].ativo==true) {
             produtoEncontrado = true;
             carrinho.push(produtos[i]);
+            salvarCarrinho();
             Swal.fire ({
                 title: 'Produto adicionado!',
                 text: 'Produto adicionado com sucesso.',
@@ -270,31 +274,100 @@ function adicionarAoCarrinho(idProduto) {
     }
 }
 
-/* function produtosCarrinho() {
-    const produtoHTML = '';
-
-    if(carrinho.length==0) {
-        avisoHTML = `
-            <div class="container" id="carrinho">
-                <div class="aviso">
-                    <h4>Você não possui produtos em seu carrinho!</h4>
-                </div>
-                <div class="carrinhoAction">
-                    <button onclick=window.location.href='produtos.html'">Voltar a comprar</button>
-                </div.
-            </div>
-        `;
-    } else {
-        for(let i=0;i<carrinho.length;i++) {
-            let cardHTML = `
-
-        `;
-
-        produtoHTML += cardHTML;
-        }
-    }
-} */
-
 function limparCarrinho() {
     carrinho = [];
+    sessionStorage.removeItem('carrinho');
+    renderizarCarrinho();
 }
+
+function renderizarCarrinho() {
+    const container = document.getElementById('produtosCarrinho');
+    let produtoHTML = '';
+
+    if(!container) return;
+
+    container.innerHTML = '';
+
+    if(carrinho.length === 0) {
+        container.innerHTML += `
+            <div id="message" class="container">
+                <h2>O carrinho está vazio...</h2>
+                <h4>Desejas comprar alguma coisa?</h4>
+                <button onclick="window.location.href='produtos.html'" id="produtos"><strong>Clique aqui!</strong></button> 
+            </div>
+        `
+    }
+    
+    let keys = [];
+    let quantidade = 0;
+
+    for(let g = 0; g < carrinho.length; g++) {
+        keys.push(carrinho[g].id);
+    }
+    
+    for(let i = 0; i < carrinho.length; i++) {
+        
+        // Como fazer a validação de mostrar somente um produto e a sua correta quantidade??????
+        
+        if(quantidade>1) {
+            produtoHTML = `
+            <section class="produtoCarrinho">
+                <article class="card_carrinho">
+                <div class="card_description">
+                    <img src="assets/img/${getImagePorNome(carrinho[i].nome)}" alt="${carrinho[i].nome}">
+                    <div class="description_body"> 
+                        <p>${carrinho[i].descricao}</p>
+                        ${carrinho[i].tamanho ? `<p><b>Tamanhos:</b> ${carrinho[i].tamanho.join(', ')}</p>` : ''}
+                    </div>
+                </div>
+                <div class="card_footer_carrinho">
+                    <div class="card_price_carrinho">
+                        <span><h2><b>R$ ${carrinho[i].preco.toFixed(2).replace('.', ',')}</b></h2></span>
+                    </div>
+                    <div class="quantidade">
+                        <button onclick="quantidadeProduto()" id="mais"></button>
+                        <p>${quantidade}</p>
+                        <button onclick="quantidadeProduto()" id="menos"></button>
+                    </div>
+                </article>
+            </section>
+            `;
+            break;
+        } else {
+            produtoHTML = `
+            <section class="produtoCarrinho">
+                <article class="card_carrinho">
+                <div class="card_description">
+                    <img src="assets/img/${getImagePorNome(carrinho[i].nome)}" alt="${carrinho[i].nome}">
+                    <div class="description_body"> 
+                        <p>${carrinho[i].descricao}</p>
+                        ${carrinho[i].tamanho ? `<p><b>Tamanhos:</b> ${carrinho[i].tamanho.join(', ')}</p>` : ''}
+                    </div>
+                </div>
+                <div class="card_footer_carrinho">
+                    <div class="card_price_carrinho">
+                        <span><h2><b>R$ ${carrinho[i].preco.toFixed(2).replace('.', ',')}</b></h2></span>
+                    </div>
+                    <div class="quantidade">
+                        <button onclick="quantidadeProduto()" id="mais"></button>
+                        <p>${quantidade}</p>
+                        <button onclick="quantidadeProduto()" id="menos"></button>
+                    </div>
+                </article>
+            </section>
+            `;
+        }
+
+    }
+
+
+    container.innerHTML += produtoHTML;
+    
+
+    return container;
+
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    renderizarCarrinho();
+});

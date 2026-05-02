@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 <body>
     
     <nav id="navbar">
         <div class="container">
             <div class="nav_image">
-                <img src="assets/img/logo/logo_Soft_King.png" alt="Logo SoftKing" id="logo">
+                <img src="assets/img/logo/logo_Soft_King.png" alt="Logo SoftKing" id="logo" onclick="window.location.href='index.html'">
             </div>
 
             <div class="nav_actions">
@@ -26,17 +27,23 @@
     </nav>
 
     <div id="bodyHeader" class="container">
-        <button class="clearCarrinho" onclick="limparCarrinho()">Limpar carrinho</button>
+        <div class="container" id="clear">
+            <button class="clearCarrinho" onclick="limparCarrinho()">Limpar carrinho</button>        
+        </div>
     </div>
+
+    <section id="cartView" class="container">
+        <div id="produtosCarrinho" class="container"></div>
+    </section>
     
-
-    <script src="scripts.js"></script>
-
     <footer>
         <div class="container" id="footer">
             <small>&copySoftKing</small>
         </div>
     </footer>
+    
+    <script src="scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 </html>

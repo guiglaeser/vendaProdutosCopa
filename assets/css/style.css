@@ -1,9 +1,16 @@
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-article {
+#visualizacao, #cartView, #history, #finalizacao {
+    flex: 1;
+}
+
+article.card {
     width: 500px;
     padding: 40px;
     height: 880px;
@@ -27,6 +34,17 @@ article {
 .produto:hover {
     transform: scale(1.01);
     box-shadow: 3px 4px 10px 10px rgba(0, 0, 0, 0.6);
+}
+
+#navbar img {
+    cursor: pointer;
+    height: 190px;
+    width: 330px;
+    transition: all 0.5s ease;
+}
+
+#navbar img:hover {
+    transform: scale(1.2);
 }
 
 #navbar .container{
@@ -72,23 +90,22 @@ button.navbar {
     background-color: rgb(175, 30, 0);
     border-radius: 25px;
     border: none;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
     width: 150px;
     height: 60px;
-    transition: 0.5s;
+    transition: all 0.5s ease;
     cursor: pointer;
     color: white;
     font-size: 16px;
-    transition: all 0.5s ease;
 }
 
 button.navbar:hover {
-    border-radius: 10px;
-    transform: translate3d(15px, -15px, 20px);
+    border-radius: 20px;
+    transform: scale(1.1);
     background-color: rgb(200, 30, 0);
     width: 140px;
     height: 60px;
-    box-shadow: 6px 8px black;
+    box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.3);
     text-transform: capitalize;
 }
 
@@ -179,7 +196,7 @@ button.actions:hover {
     padding: 10px;
     border-radius: 10px;
     text-align: center;
-    height: 80px;
+    height: 70px;
     transition: all 1s ease;
 }
 
@@ -198,7 +215,7 @@ button.actions:hover {
 }
 
 #history .container:hover {
-    height: 150px;
+    height: 115px;
     text-align: left;
 }
 
@@ -214,6 +231,7 @@ button.actions:hover {
     justify-content: center;
     color: white;
     height: 90px;
+    margin-top: auto;
 }
 
 #footer small {
@@ -244,12 +262,15 @@ button.actions:hover {
 }
 
 #bodyHeader {
-    height: 100px;
-    box-shadow: 2px 1px 3px 1px rgba(0, 0, 0, 0.4);
+    height: 40px;
     display: flex;
     justify-content: right;
     align-items: center;
     padding: 20px;
+}
+
+#search {
+    padding: 10px;
 }
 
 .clearCarrinho{
@@ -267,4 +288,133 @@ button.actions:hover {
     background-color: rgb(245, 0, 0);
     transform: scale(1.09);
     box-shadow: 3px 4px 3px 4px rgba(0, 0, 0, 0.3);
+}
+
+#cartView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: auto;
+}
+
+#produtosCarrinho {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 15px;
+}
+
+#produtosCarrinho #produtos {
+    height: 60px;
+    width: 200px;
+    background-color: white;
+    border: none;
+    font-size: 20px;
+    border-radius: 15px;
+    box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+#produtosCarrinho #produtos:hover{
+    transform: scale(1.2);
+    box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.3);
+    height: 65px;
+    width: 215px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+
+.produtoCarrinho {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.produtoCarrinho .card_carrinho{
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 20px;
+}
+
+.produtoCarrinho img{
+    height: 160px;
+    width: 180px;
+}
+
+.produtoCarrinho .card_carrinho h2{
+    font-size: 20px;
+}
+
+.quantidade {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#mais {
+    height: 20px;
+    width: 20px;
+    background-image: url(../icons/mais.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+#menos {
+    height: 40px;
+    width: 10px;
+    background-image: url(../icons/menos.png);
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+}
+
+.produtoCarrinho .card_carrinho .card_description {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 50px;
+}
+
+.produtoCarrinho .card_carrinho .description_body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.produtoCarrinho .card_carrinho .footer_carrinho {
+    display: flex;    
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#message {
+    height: 300px;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 22px;
 }
