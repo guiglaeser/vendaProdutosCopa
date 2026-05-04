@@ -12,7 +12,8 @@ var produtos = [
         estoque: 2000,
         categoria: "album",
         preco: 79.90,
-        ativo: true
+        ativo: true,
+        quantidade: 0
     },
 
     {
@@ -23,7 +24,8 @@ var produtos = [
         estoque: 15000,
         preco: 459.90,
         categoria: "camisa",
-        ativo: true
+        ativo: true,
+        quantidade: 0
     },
 
     {
@@ -34,7 +36,8 @@ var produtos = [
         estoque: 20000,
         ativo: true,
         preco: 257.99,
-        categoria: "camisa"
+        categoria: "camisa",
+        quantidade: 0
     },
 
     {
@@ -45,7 +48,8 @@ var produtos = [
         ativo: true,
         preco: 349.90,
         estoque: 3000,
-        categoria: "camisa"
+        categoria: "camisa",
+        quantidade: 0
     },
 
     {
@@ -56,7 +60,8 @@ var produtos = [
         ativo: true,
         estoque: 20000,
         preco: 489.90,
-        categoria: "camisa"
+        categoria: "camisa",
+        quantidade: 0
     },
 
     {
@@ -67,7 +72,8 @@ var produtos = [
         ativo: true,
         preco: 280.78,
         categoria: "camisa",
-        estoque: 3000
+        estoque: 3000,
+        quantidade: 0
     },
 
     {
@@ -78,7 +84,8 @@ var produtos = [
         ativo: true,
         preco: 349.99,
         categoria: "camisa",
-        estoque: 4000
+        estoque: 4000,
+        quantidade: 0
     },
 
     {
@@ -89,7 +96,8 @@ var produtos = [
         ativo: true,
         preco: 459.99,
         categoria: "camisa",
-        estoque: 10000
+        estoque: 10000,
+        quantidade: 0
     },
 
     {
@@ -100,7 +108,8 @@ var produtos = [
         ativo: true,
         preco: 349.90,
         categoria: "camisa",
-        estoque: 2000
+        estoque: 2000,
+        quantidade: 0
     },
 
     {
@@ -111,7 +120,8 @@ var produtos = [
         ativo: true,
         preco: 329.90,
         categoria: "camisa",
-        estoque: 1450
+        estoque: 1450,
+        quantidade: 0
     },
 
     {
@@ -122,7 +132,8 @@ var produtos = [
         ativo: true,
         preco: 299.99,
         categoria: "camisa",
-        estoque: 4000
+        estoque: 4000,
+        quantidade: 0
     },
 
     {
@@ -133,7 +144,8 @@ var produtos = [
         ativo: true,
         preco: 359.99,
         categoria: "camisa",
-        estoque: 5000
+        estoque: 5000,
+        quantidade: 0
     }
     
 ];
@@ -228,49 +240,190 @@ function comprar() {
     })
     setTimeout(() => {
         window.location.href='finalizacaoCompra.html';
-    }, 1900);
+    }, 2000);
 }
 
 function adicionarAoCarrinho(idProduto) {
     let produtoEncontrado = false;
 
-    for(let i=0;i<produtos.length;i++) {
-        if(parseInt(idProduto)==produtos[i].id && produtos[i].estoque > 0 && produtos[i].ativo==true) {
-            produtoEncontrado = true;
-            carrinho.push(produtos[i]);
-            salvarCarrinho();
-            Swal.fire ({
-                title: 'Produto adicionado!',
-                text: 'Produto adicionado com sucesso.',
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 1000
-            }).then(() => {
-                
+    if(carrinho.length==0) {
+
+        produtos.forEach(produto => {
+            if(parseInt(idProduto)==produto.id && produto.estoque > 0 && produto.ativo==true) {
+                produtoEncontrado = true;
+                produto.quantidade+=1, produto.estoque-=1;
+                carrinho.push(produto);
+                salvarCarrinho();
                 Swal.fire ({
+                    title: 'Produto adicionado!',
+                    text: 'Operação realizada com sucesso.',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1000
+                }).then(() => {
+                    
+                    Swal.fire ({
                         title: 'O que desejas fazer?',
-                        text: '',
+                        text: 'Escolha para onde prosseguir:',
                         showCancelButton: true,
                         confirmButtonText: 'Continuar comprando',
                         cancelButtonText: 'Ir para o carrinho',
-                        confirmButtonColor: 'rgb(0, 168, 0)',
+                        confirmButtonColor: 'rgb(0, 150, 0)',
                         cancelButtonColor: 'rgb(0, 150, 0)'
                     }).then((result) => {
                         if(!result.isConfirmed) {
                             window.location.href='carrinho.html';
                         }
                     })
-            })
-            break;
-        }
-    }
+                })
+            }
+        });
 
-    if(!produtoEncontrado){
-        Swal.fire ({
-            title: 'Erro!',
+
+
+        // for(let i = 0;i < produtos.length; i++) {
+        //     let produto = produtos[i];
+        //     if(parseInt(idProduto)==produto.id && produto.estoque > 0 && produto.ativo==true) {
+        //         produtoEncontrado = true;
+        //         produto.quantidade++, produto.estoque--;
+        //         carrinho.push(produto);
+        //         salvarCarrinho();
+        //         Swal.fire ({
+        //             title: 'Produto adicionado!',
+        //             text: 'Operação realizada com sucesso.',
+        //             icon: 'success',
+        //             showConfirmButton: false,
+        //             timer: 1000
+        //         }).then(() => {
+                    
+        //             Swal.fire ({
+        //                 title: 'O que desejas fazer?',
+        //                 text: 'Escolha para onde prosseguir:',
+        //                 showCancelButton: true,
+        //                 confirmButtonText: 'Continuar comprando',
+        //                 cancelButtonText: 'Ir para o carrinho',
+        //                 confirmButtonColor: 'rgb(0, 150, 0)',
+        //                 cancelButtonColor: 'rgb(0, 150, 0)'
+        //             }).then((result) => {
+        //                 if(!result.isConfirmed) {
+        //                     window.location.href='carrinho.html';
+        //                 }
+        //             })
+        //         })
+        //         break;
+        //     }
+        // }
+    } else {
+
+        carrinho.forEach(produto1 => {
+            produtos.forEach(produto2 => {
+                if(produto2.id==produto1.id) {
+                    Swal.fire ({
+                        title:'Produto já adicionado!',
+                        text:'Altere a quantidade no carrinho.',
+                        icon: 'warning',
+                        showCancelButton: false,
+                        confirmButtonText: 'Ok',
+                        confirmButtonColor: 'rgb(0, 160, 0)'
+                    });
+                    produtoEncontrado = true;
+                    salvarCarrinho();
+                } else {
+                    if(parseInt(idProduto)==produto2.id && produto2.estoque > 0 && produto2.ativo==true) {
+                            produtoEncontrado = true;
+                            produto2.quantidade+=1, produto2.estoque-=1;
+                            carrinho.push(produto2);
+                            Swal.fire ({
+                                title: 'Produto adicionado!',
+                                text: 'Operação realizada com sucesso.',
+                                icon: 'success',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                
+                                Swal.fire ({
+                                    title: 'O que desejas fazer?',
+                                    text: '',
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Continuar comprando',
+                                    cancelButtonText: 'Ir para o carrinho',
+                                    confirmButtonColor: 'rgb(0, 150, 0)',
+                                    cancelButtonColor: 'rgb(0, 150, 0)'
+                                }).then((result) => {
+                                    if(!result.isConfirmed) {
+                                        window.location.href='carrinho.html';
+                                    }
+                                })
+                            })
+                            salvarCarrinho();
+                    }
+                }
+            })
+        });
+
+
+
+
+
+        // for(let j = 0; j < carrinho.length; j++) {
+        //     let produto2 = carrinho[j];
+        //     if(parseInt(idProduto)==produto2.id) {
+        //         Swal.fire ({
+        //             title:'Produto já adicionado!',
+        //             text:'Altere a quantidade no carrinho.',
+        //             icon: 'warning',
+        //             showCancelButton: false,
+        //             confirmButtonText: 'Ok',
+        //             confirmButtonColor: 'rgb(0, 160, 0)'
+        //         });
+        //         produtoEncontrado = true;
+        //         salvarCarrinho();
+        //         break;
+        //     } else {
+                
+        //         for(let h = 0; h < produtos.length; h++) {
+        //             let produto3 = produtos[h];
+        //             if(parseInt(idProduto)==produto3.id && produto3.estoque > 0 && produto3.ativo==true) {
+        //                     produtoEncontrado = true;
+        //                     produto3.quantidade++;
+        //                     produto3.estoque--;
+        //                     carrinho.push(produto);
+        //                     Swal.fire ({
+        //                         title: 'Produto adicionado!',
+        //                         text: 'Operação realizada com sucesso.',
+        //                         icon: 'success',
+        //                         showConfirmButton: false,
+        //                         timer: 1000
+        //                     }).then(() => {
+                                
+        //                         Swal.fire ({
+        //                             title: 'O que desejas fazer?',
+        //                             text: '',
+        //                             showCancelButton: true,
+        //                             confirmButtonText: 'Continuar comprando',
+        //                             cancelButtonText: 'Ir para o carrinho',
+        //                             confirmButtonColor: 'rgb(0, 150, 0)',
+        //                             cancelButtonColor: 'rgb(0, 150, 0)'
+        //                         }).then((result) => {
+        //                             if(!result.isConfirmed) {
+        //                                 window.location.href='carrinho.html';
+        //                             }
+        //                         })
+        //                     })
+        //                     salvarCarrinho();
+        //                     break;
+        //                 }
+        //             }
+        //         }   
+        //     }
+        // }
+        if(!produtoEncontrado){
+            Swal.fire ({
+            title: 'Atenção!',
             text: 'Produto fora de estoque ou inativo.',
             icon: 'error'
-        });
+            });
+        }
     }
 }
 
@@ -298,71 +451,37 @@ function renderizarCarrinho() {
         `
     }
     
-    let keys = [];
-    let quantidade = 0;
-
-    for(let g = 0; g < carrinho.length; g++) {
-        keys.push(carrinho[g].id);
-    }
+    
     
     for(let i = 0; i < carrinho.length; i++) {
-        
-        // Como fazer a validação de mostrar somente um produto e a sua correta quantidade??????
-        
-        if(quantidade>1) {
-            produtoHTML = `
-            <section class="produtoCarrinho">
-                <article class="card_carrinho">
-                <div class="card_description">
-                    <img src="assets/img/${getImagePorNome(carrinho[i].nome)}" alt="${carrinho[i].nome}">
-                    <div class="description_body"> 
-                        <p>${carrinho[i].descricao}</p>
-                        ${carrinho[i].tamanho ? `<p><b>Tamanhos:</b> ${carrinho[i].tamanho.join(', ')}</p>` : ''}
-                    </div>
+    
+        produtoHTML = `
+        <section class="produtoCarrinho">
+            <article class="card_carrinho">
+            <div class="card_description">
+               <img src="assets/img/${getImagePorNome(carrinho[i].nome)}" alt="$carrinho[i].nome}">
+                <div class="description_body"> 
+                    <p>${carrinho[i].descricao}</p>
+                    ${carrinho[i].tamanho ? `<p><b>Tamanhos:</b> ${carrinho[i].tamanho.join(', ')}</p>` : ''}
                 </div>
-                <div class="card_footer_carrinho">
-                    <div class="card_price_carrinho">
-                        <span><h2><b>R$ ${carrinho[i].preco.toFixed(2).replace('.', ',')}</b></h2></span>
-                    </div>
-                    <div class="quantidade">
-                        <button onclick="quantidadeProduto()" id="mais"></button>
-                        <p>${quantidade}</p>
-                        <button onclick="quantidadeProduto()" id="menos"></button>
-                    </div>
-                </article>
-            </section>
-            `;
-            break;
-        } else {
-            produtoHTML = `
-            <section class="produtoCarrinho">
-                <article class="card_carrinho">
-                <div class="card_description">
-                    <img src="assets/img/${getImagePorNome(carrinho[i].nome)}" alt="${carrinho[i].nome}">
-                    <div class="description_body"> 
-                        <p>${carrinho[i].descricao}</p>
-                        ${carrinho[i].tamanho ? `<p><b>Tamanhos:</b> ${carrinho[i].tamanho.join(', ')}</p>` : ''}
-                    </div>
+            </div>
+
+            <div class="card_footer_carrinho">
+                <div class="card_price_carrinho">
+                    <span><h2><b>R$ ${carrinho[i].preco.toFixed(2).replace('.', ',')}</b></h2></span>
                 </div>
-                <div class="card_footer_carrinho">
-                    <div class="card_price_carrinho">
-                        <span><h2><b>R$ ${carrinho[i].preco.toFixed(2).replace('.', ',')}</b></h2></span>
-                    </div>
-                    <div class="quantidade">
-                        <button onclick="quantidadeProduto()" id="mais"></button>
-                        <p>${quantidade}</p>
-                        <button onclick="quantidadeProduto()" id="menos"></button>
-                    </div>
-                </article>
-            </section>
-            `;
-        }
-
-    }
-
+                <div class="quantidade">
+                    <button onclick="quantidadeProduto()" id="mais"></button>
+                    <p>${carrinho[i].quantidade}</p>
+                    <button onclick="quantidadeProduto()" id="menos"></button>
+                </div>
+            </article>
+        </section>
+        `;
 
     container.innerHTML += produtoHTML;
     
+    }
 
     return container;
 
@@ -371,3 +490,26 @@ function renderizarCarrinho() {
 document.addEventListener('DOMContentLoaded', function() {
     renderizarCarrinho();
 });
+
+/* produtoHTML = `
+        <section class="produtoCarrinho">
+            <article class="card_carrinho">
+            <div class="card_description">
+               <img src="assets/img/${getImagePorNome(carrinho[i]).nome)}" alt="$carrinho[i].nome}">
+                <div class="description_body"> 
+                    <p>${carrinho[i].descricao}</p>
+                    ${carrinho[i].tamanho ? `<p><b>Tamanhos:</b> ${carrinho[i].tamanho.join(', ')}</p>` : ''}
+                </div>
+            </div>
+            <div class="card_footer_carrinho">
+                <div class="card_price_carrinho">
+                    <span><h2><b>R$ ${carrinho[i].preco.toFixed(2).replace('.', ',')}</b></h2></span>
+                </div>
+                <div class="quantidade">
+                    <button onclick="quantidadeProduto()" id="mais"></button>
+                    <p>${quantidade[i][1]}</p>
+                    <button onclick="quantidadeProduto()" id="menos"></button>
+                </div>
+            </article>
+        </section>
+        `; */
