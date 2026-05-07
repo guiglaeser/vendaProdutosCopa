@@ -248,21 +248,23 @@ function adicionarAoCarrinho(idProduto) {
 
     if(carrinho.length==0) {
 
-        produtos.forEach(produto => {
+        /* produtos.forEach(produto => {
             if(parseInt(idProduto)==produto.id && produto.estoque > 0 && produto.ativo==true) {
                 produtoEncontrado = true;
                 produto.quantidade+=1, produto.estoque-=1;
                 carrinho.push(produto);
+                produtos[produto].push(produto);
                 salvarCarrinho();
                 Swal.fire ({
                     title: 'Produto adicionado!',
                     text: 'Operação realizada com sucesso.',
                     icon: 'success',
                     showConfirmButton: false,
-                    timer: 1000
+                    timer: 2000
                 }).then(() => {
                     
                     Swal.fire ({
+                        icon: 'question',
                         title: 'O que desejas fazer?',
                         text: 'Escolha para onde prosseguir:',
                         showCancelButton: true,
@@ -277,45 +279,50 @@ function adicionarAoCarrinho(idProduto) {
                     })
                 })
             }
-        });
+        }); */
 
 
 
-        // for(let i = 0;i < produtos.length; i++) {
-        //     let produto = produtos[i];
-        //     if(parseInt(idProduto)==produto.id && produto.estoque > 0 && produto.ativo==true) {
-        //         produtoEncontrado = true;
-        //         produto.quantidade++, produto.estoque--;
-        //         carrinho.push(produto);
-        //         salvarCarrinho();
-        //         Swal.fire ({
-        //             title: 'Produto adicionado!',
-        //             text: 'Operação realizada com sucesso.',
-        //             icon: 'success',
-        //             showConfirmButton: false,
-        //             timer: 1000
-        //         }).then(() => {
+        for(let i = 0;i < produtos.length; i++) {
+            let produto = produtos[i];
+            if(parseInt(idProduto)==produto.id && produto.estoque > 0 && produto.ativo==true) {
+                produtoEncontrado = true;
+                produto.quantidade++, produto.estoque--;
+                produtos[i] += produto;
+                carrinho.push(produto);
+                salvarCarrinho();
+
+                Swal.fire ({
+                    title: 'Produto adicionado!',
+                    text: 'Operação realizada com sucesso.',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 2300
+                }).then(() => {
                     
-        //             Swal.fire ({
-        //                 title: 'O que desejas fazer?',
-        //                 text: 'Escolha para onde prosseguir:',
-        //                 showCancelButton: true,
-        //                 confirmButtonText: 'Continuar comprando',
-        //                 cancelButtonText: 'Ir para o carrinho',
-        //                 confirmButtonColor: 'rgb(0, 150, 0)',
-        //                 cancelButtonColor: 'rgb(0, 150, 0)'
-        //             }).then((result) => {
-        //                 if(!result.isConfirmed) {
-        //                     window.location.href='carrinho.html';
-        //                 }
-        //             })
-        //         })
-        //         break;
-        //     }
-        // }
+                    Swal.fire ({
+                        icon: 'question',
+                        title: 'O que desejas fazer?',
+                        text: 'Escolha para onde prosseguir:',
+                        showCancelButton: true,
+                        confirmButtonText: 'Continuar comprando',
+                        cancelButtonText: 'Ir para o carrinho',
+                        confirmButtonColor: 'rgb(0, 150, 0)',
+                        cancelButtonColor: 'rgb(0, 150, 0)'
+                    }).then((result) => {
+                        if(!result.isConfirmed) {
+                            window.location.href='carrinho.html';
+                        }
+                    })
+                })
+                
+
+                break;
+            }
+        }
     } else {
 
-        carrinho.forEach(produto1 => {
+        /* carrinho.forEach(produto1 => {
             produtos.forEach(produto2 => {
                 if(produto2.id==produto1.id) {
                     Swal.fire ({
@@ -359,64 +366,68 @@ function adicionarAoCarrinho(idProduto) {
                     }
                 }
             })
-        });
+        }); */
 
 
 
 
 
-        // for(let j = 0; j < carrinho.length; j++) {
-        //     let produto2 = carrinho[j];
-        //     if(parseInt(idProduto)==produto2.id) {
-        //         Swal.fire ({
-        //             title:'Produto já adicionado!',
-        //             text:'Altere a quantidade no carrinho.',
-        //             icon: 'warning',
-        //             showCancelButton: false,
-        //             confirmButtonText: 'Ok',
-        //             confirmButtonColor: 'rgb(0, 160, 0)'
-        //         });
-        //         produtoEncontrado = true;
-        //         salvarCarrinho();
-        //         break;
-        //     } else {
+        for(let j = 0; j < carrinho.length; j++) {
+            let produto2 = carrinho[j];
+            if(parseInt(idProduto)==produto2.id) {
+                Swal.fire ({
+                    title:'Produto já adicionado!',
+                    text:'Altere a quantidade no carrinho.',
+                    icon: 'warning',
+                    showCancelButton: false,
+                    confirmButtonText: 'Ok',
+                    confirmButtonColor: 'rgb(0, 160, 0)'
+                });
+                produtoEncontrado = true;
+                salvarCarrinho();
+                break;
+            } else {
                 
-        //         for(let h = 0; h < produtos.length; h++) {
-        //             let produto3 = produtos[h];
-        //             if(parseInt(idProduto)==produto3.id && produto3.estoque > 0 && produto3.ativo==true) {
-        //                     produtoEncontrado = true;
-        //                     produto3.quantidade++;
-        //                     produto3.estoque--;
-        //                     carrinho.push(produto);
-        //                     Swal.fire ({
-        //                         title: 'Produto adicionado!',
-        //                         text: 'Operação realizada com sucesso.',
-        //                         icon: 'success',
-        //                         showConfirmButton: false,
-        //                         timer: 1000
-        //                     }).then(() => {
+                for(let h = 0; h < produtos.length; h++) {
+                    let produto3 = produtos[h];
+                    if(parseInt(idProduto)==produto3.id && produto3.estoque > 0 && produto3.ativo==true) {
+                        produtoEncontrado = true;
+                        produto3.quantidade++, produto3.estoque--;
+                        carrinho.push(produto3);
+                        produtos[h] += produto3;
+
+                    Swal.fire ({
+                        title: 'Produto adicionado!',
+                        text: 'Operação realizada com sucesso.',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 2300
+                    }).then(() => {
+                    
+                        Swal.fire ({
+                            icon: 'question',
+                            title: 'O que desejas fazer?',
+                            text: 'Escolha para onde prosseguir:',
+                            showCancelButton: true,
+                            confirmButtonText: 'Continuar comprando',
+                            cancelButtonText: 'Ir para o carrinho',
+                            confirmButtonColor: 'rgb(0, 150, 0)',
+                            cancelButtonColor: 'rgb(0, 150, 0)'
+                        }).then((result) => {
+                            if(!result.isConfirmed) {
+                                window.location.href='carrinho.html';
+                            }
+                        })
+                    })
+
                                 
-        //                         Swal.fire ({
-        //                             title: 'O que desejas fazer?',
-        //                             text: '',
-        //                             showCancelButton: true,
-        //                             confirmButtonText: 'Continuar comprando',
-        //                             cancelButtonText: 'Ir para o carrinho',
-        //                             confirmButtonColor: 'rgb(0, 150, 0)',
-        //                             cancelButtonColor: 'rgb(0, 150, 0)'
-        //                         }).then((result) => {
-        //                             if(!result.isConfirmed) {
-        //                                 window.location.href='carrinho.html';
-        //                             }
-        //                         })
-        //                     })
-        //                     salvarCarrinho();
-        //                     break;
-        //                 }
-        //             }
-        //         }   
-        //     }
-        // }
+                        salvarCarrinho();
+                        break;
+                        }
+                    }
+                }   
+            }
+        }
         if(!produtoEncontrado){
             Swal.fire ({
             title: 'Atenção!',
@@ -425,7 +436,7 @@ function adicionarAoCarrinho(idProduto) {
             });
         }
     }
-}
+
 
 function limparCarrinho() {
     carrinho = [];
@@ -453,27 +464,31 @@ function renderizarCarrinho() {
     
     
     
-    for(let i = 0; i < carrinho.length; i++) {
+    for(let f = 0; f < carrinho.length; f++) {
     
         produtoHTML = `
         <section class="produtoCarrinho">
             <article class="card_carrinho">
             <div class="card_description">
-               <img src="assets/img/${getImagePorNome(carrinho[i].nome)}" alt="$carrinho[i].nome}">
+               <img src="assets/img/${getImagePorNome(carrinho[f].nome)}" alt="${carrinho[f].nome}">
                 <div class="description_body"> 
-                    <p>${carrinho[i].descricao}</p>
-                    ${carrinho[i].tamanho ? `<p><b>Tamanhos:</b> ${carrinho[i].tamanho.join(', ')}</p>` : ''}
+                    <p>${carrinho[f].descricao}</p>
+                    ${carrinho[f].tamanho ? `<p><b>Tamanhos:</b> ${carrinho[f].tamanho.join(', ')}</p>` : ''}
                 </div>
             </div>
 
             <div class="card_footer_carrinho">
                 <div class="card_price_carrinho">
-                    <span><h2><b>R$ ${carrinho[i].preco.toFixed(2).replace('.', ',')}</b></h2></span>
+                    <span><h2><b>R$ ${carrinho[f].preco.toFixed(2).replace('.', ',')}</b></h2></span>
                 </div>
                 <div class="quantidade">
-                    <button onclick="quantidadeProduto()" id="mais"></button>
-                    <p>${carrinho[i].quantidade}</p>
-                    <button onclick="quantidadeProduto()" id="menos"></button>
+                    <button onclick="maisProduto(${carrinho[f].id})" id="mais"></button>
+                    <p>${carrinho[f].quantidade}</p>
+                    <button onclick="menosProduto(${carrinho[f].id})" id="menos"></button>
+                </div>
+
+                <div class="excluir">
+                    <button onclick="excluirProduto(${carrinho[f].id})" id="excluirProdutoCarrinho">Excluir produto</button>
                 </div>
             </article>
         </section>
@@ -491,25 +506,36 @@ document.addEventListener('DOMContentLoaded', function() {
     renderizarCarrinho();
 });
 
-/* produtoHTML = `
-        <section class="produtoCarrinho">
-            <article class="card_carrinho">
-            <div class="card_description">
-               <img src="assets/img/${getImagePorNome(carrinho[i]).nome)}" alt="$carrinho[i].nome}">
-                <div class="description_body"> 
-                    <p>${carrinho[i].descricao}</p>
-                    ${carrinho[i].tamanho ? `<p><b>Tamanhos:</b> ${carrinho[i].tamanho.join(', ')}</p>` : ''}
-                </div>
-            </div>
-            <div class="card_footer_carrinho">
-                <div class="card_price_carrinho">
-                    <span><h2><b>R$ ${carrinho[i].preco.toFixed(2).replace('.', ',')}</b></h2></span>
-                </div>
-                <div class="quantidade">
-                    <button onclick="quantidadeProduto()" id="mais"></button>
-                    <p>${quantidade[i][1]}</p>
-                    <button onclick="quantidadeProduto()" id="menos"></button>
-                </div>
-            </article>
-        </section>
-        `; */
+function maisProduto(idProdutoCarrinho) {
+    
+    carrinho.forEach((produto) => {
+        if(produto.id == idProdutoCarrinho) {
+            produto.quantidade++;
+            produto.estoque--;
+            salvarCarrinho();
+        }
+    })
+    
+    document.addEventListener('click', function() {
+        renderizarCarrinho();
+    });
+    
+}
+
+function menosProduto(idProdutoCarrinho) {
+    
+    carrinho.forEach((produto) => {
+        if(produto.id == idProdutoCarrinho) {
+            produto.quantidade > 1 ? produto.quantidade-- : produto.quantidade = 1;
+            produto.estoque++;
+            salvarCarrinho();
+        }
+    })
+    
+    document.addEventListener('click', function() {
+        renderizarCarrinho();
+    });
+    
+}
+
+/* Criar Função de excluir produto do carrinho */

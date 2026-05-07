@@ -31,7 +31,7 @@ article.card {
     border-radius: 20px;
 }
 
-.produto .card:hover {
+.produto:hover {
     transform: scale(1.01);
     box-shadow: 2px 3px 4px 2px rgba(0, 0, 0, 0.1);
 }
@@ -417,4 +417,22 @@ button.actions:hover {
     flex-direction: column;
     align-items: center;
     font-size: 22px;
+}
+
+#excluirProdutoCarrinho {
+    height: 40px;
+    width: 140px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(215, 0, 0);
+    transition: all 0.4s ease;
+    box-shadow: 3px 4px 2px 1px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: 15px;
+}
+
+#excluirProdutoCarrinho:hover {
+    background-color: rgb(245, 0, 0);
+    transform: scale(1.009);
+    box-shadow: 3px 4px 3px 4px rgba(0, 0, 0, 0.3);
 }
