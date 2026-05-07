@@ -54,7 +54,7 @@ article.card {
     justify-content: space-between;
     padding: 40px;
     background-color: rgb(170, 30, 0);
-    height: 200px;
+    height: 175px;
     box-shadow: 5px 5px rgb(253, 207, 207);
 }
 
@@ -152,11 +152,11 @@ button.actions {
 
 button.actions:hover {
     border-radius: 15px;
-    transform: translate3d(-8px, -5px, 10px);
+    transform: scale(1.03);
     background-color: rgb(200, 30, 0);
     width: 195px;
     height: 48px;
-    box-shadow: 4px 6px black;
+    box-shadow: 1px 4px 6px 3px rgba(0, 0, 0, 0.2);
 }
 
 #presentation {
@@ -232,6 +232,7 @@ button.actions:hover {
     color: white;
     height: 90px;
     margin-top: auto;
+    width: 100%;
 }
 
 #footer small {
@@ -334,6 +335,8 @@ button.actions:hover {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
 }
 
 .produtoCarrinho .card_carrinho{
@@ -402,9 +405,9 @@ button.actions:hover {
     align-items: center;
 }
 
-.produtoCarrinho .card_carrinho .footer_carrinho {
+.produtoCarrinho .card_carrinho .card_footer_carrinho {
     display: flex;    
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -434,5 +437,71 @@ button.actions:hover {
 #excluirProdutoCarrinho:hover {
     background-color: rgb(245, 0, 0);
     transform: scale(1.009);
+    box-shadow: 3px 4px 3px 4px rgba(0, 0, 0, 0.3);
+}
+
+#carrinhoTotal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    margin: 10px;
+}
+
+#produtosTotal {
+    height: 65px;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+#resetarProduto {
+    height: 40px;
+    width: 140px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(215, 0, 0);
+    transition: all 0.4s ease;
+    box-shadow: 3px 4px 2px 1px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: 15px;
+}
+
+#resetarProduto:hover {
+    background-color: rgb(245, 0, 0);
+    transform: scale(1.009);
+    box-shadow: 3px 4px 3px 4px rgba(0, 0, 0, 0.3);
+}   
+
+#comprarCarrinho {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 99%;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+#comprarCarrinho button {
+    height: 50px;
+    width: 240px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(215, 0, 0);
+    transition: all 0.4s ease;
+    box-shadow: 3px 4px 2px 1px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: 15px;
+}
+
+#comprarCarrinho button:hover {
+    background-color: rgb(245, 0, 0);
+    transform: scale(1.09);
     box-shadow: 3px 4px 3px 4px rgba(0, 0, 0, 0.3);
 }
