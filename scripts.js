@@ -473,5 +473,5 @@ function resetProduto(idProduto) {
 }
 
 function comprarCarrinho() {
-
+    window.location.href='finalizacaoCompra.html';
 }
