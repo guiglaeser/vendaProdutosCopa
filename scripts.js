@@ -17,66 +17,66 @@ var produtos = [
   },
   // Brasil
   { id: 2, nome: "Brasil", descricao: "Camisa da Seleção Brasileira - P", tamanho: "P", estoque: 15000, preco: 389.9, categoria: "camisa", ativo: true, quantidade: 0 },
-  { id: 2, nome: "Brasil", descricao: "Camisa da Seleção Brasileira - M", tamanho: "M", estoque: 15000, preco: 419.9, categoria: "camisa", ativo: true, quantidade: 0 },
-  { id: 2, nome: "Brasil", descricao: "Camisa da Seleção Brasileira - G", tamanho: "G", estoque: 15000, preco: 439.9, categoria: "camisa", ativo: true, quantidade: 0 },
-  { id: 2, nome: "Brasil", descricao: "Camisa da Seleção Brasileira - GG", tamanho: "GG", estoque: 15000, preco: 459.9, categoria: "camisa", ativo: true, quantidade: 0 },
+  { id: 3, nome: "Brasil", descricao: "Camisa da Seleção Brasileira - M", tamanho: "M", estoque: 15000, preco: 419.9, categoria: "camisa", ativo: true, quantidade: 0 },
+  { id: 4, nome: "Brasil", descricao: "Camisa da Seleção Brasileira - G", tamanho: "G", estoque: 15000, preco: 439.9, categoria: "camisa", ativo: true, quantidade: 0 },
+  { id: 5, nome: "Brasil", descricao: "Camisa da Seleção Brasileira - GG", tamanho: "GG", estoque: 15000, preco: 459.9, categoria: "camisa", ativo: true, quantidade: 0 },
 
   // Uruguai
-  { id: 3, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai - P", tamanho: "P", estoque: 20000, ativo: true, preco: 170.99, categoria: "camisa", quantidade: 0 },
-  { id: 3, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai - M", tamanho: "M", estoque: 20000, ativo: true, preco: 207.99, categoria: "camisa", quantidade: 0 },
-  { id: 3, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai - G", tamanho: "G", estoque: 20000, ativo: true, preco: 237.99, categoria: "camisa", quantidade: 0 },
-  { id: 3, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai - GG", tamanho: "GG", estoque: 20000, ativo: true, preco: 267.99, categoria: "camisa", quantidade: 0 },
-  { id: 3, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai - G1", tamanho: "G1", estoque: 20000, ativo: true, preco: 287.99, categoria: "camisa", quantidade: 0 },
+  { id: 6, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai - P", tamanho: "P", estoque: 20000, ativo: true, preco: 170.99, categoria: "camisa", quantidade: 0 },
+  { id: 7, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai - M", tamanho: "M", estoque: 20000, ativo: true, preco: 207.99, categoria: "camisa", quantidade: 0 },
+  { id: 8, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai - G", tamanho: "G", estoque: 20000, ativo: true, preco: 237.99, categoria: "camisa", quantidade: 0 },
+  { id: 9, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai - GG", tamanho: "GG", estoque: 20000, ativo: true, preco: 267.99, categoria: "camisa", quantidade: 0 },
+  { id: 10, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai - G1", tamanho: "G1", estoque: 20000, ativo: true, preco: 287.99, categoria: "camisa", quantidade: 0 },
 
   // Argentina
-  { id: 4, nome: "Argentina", descricao: "Camisa da Seleção Argentina - P", tamanho: "P", ativo: true, preco: 249.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
-  { id: 4, nome: "Argentina", descricao: "Camisa da Seleção Argentina - M", tamanho: "M", ativo: true, preco: 269.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
-  { id: 4, nome: "Argentina", descricao: "Camisa da Seleção Argentina - G", tamanho: "G", ativo: true, preco: 299.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
-  { id: 4, nome: "Argentina", descricao: "Camisa da Seleção Argentina - GG", tamanho: "GG", ativo: true, preco: 319.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
-  { id: 4, nome: "Argentina", descricao: "Camisa da Seleção Argentina - G1", tamanho: "G1", ativo: true, preco: 349.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
-  { id: 4, nome: "Argentina", descricao: "Camisa da Seleção Argentina - G2", tamanho: "G2", ativo: true, preco: 369.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
+  { id: 11, nome: "Argentina", descricao: "Camisa da Seleção Argentina - P", tamanho: "P", ativo: true, preco: 249.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
+  { id: 12, nome: "Argentina", descricao: "Camisa da Seleção Argentina - M", tamanho: "M", ativo: true, preco: 269.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
+  { id: 13, nome: "Argentina", descricao: "Camisa da Seleção Argentina - G", tamanho: "G", ativo: true, preco: 299.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
+  { id: 14, nome: "Argentina", descricao: "Camisa da Seleção Argentina - GG", tamanho: "GG", ativo: true, preco: 319.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
+  { id: 15, nome: "Argentina", descricao: "Camisa da Seleção Argentina - G1", tamanho: "G1", ativo: true, preco: 349.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
+  { id: 16, nome: "Argentina", descricao: "Camisa da Seleção Argentina - G2", tamanho: "G2", ativo: true, preco: 369.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
 
   // Alemanha
-  { id: 5, nome: "Alemanha", descricao: "Camisa 2 da Seleção Alemã - P", tamanho: "P", ativo: true, estoque: 20000, preco: 489.9, categoria: "camisa", quantidade: 0 },
-  { id: 5, nome: "Alemanha", descricao: "Camisa 2 da Seleção Alemã - M", tamanho: "M", ativo: true, estoque: 20000, preco: 489.9, categoria: "camisa", quantidade: 0 },
-  { id: 5, nome: "Alemanha", descricao: "Camisa 2 da Seleção Alemã - G", tamanho: "G", ativo: true, estoque: 20000, preco: 489.9, categoria: "camisa", quantidade: 0 },
-  { id: 5, nome: "Alemanha", descricao: "Camisa 2 da Seleção Alemã - GG", tamanho: "GG", ativo: true, estoque: 20000, preco: 489.9, categoria: "camisa", quantidade: 0 },
+  { id: 17, nome: "Alemanha", descricao: "Camisa 2 da Seleção Alemã - P", tamanho: "P", ativo: true, estoque: 20000, preco: 489.9, categoria: "camisa", quantidade: 0 },
+  { id: 18, nome: "Alemanha", descricao: "Camisa 2 da Seleção Alemã - M", tamanho: "M", ativo: true, estoque: 20000, preco: 489.9, categoria: "camisa", quantidade: 0 },
+  { id: 19, nome: "Alemanha", descricao: "Camisa 2 da Seleção Alemã - G", tamanho: "G", ativo: true, estoque: 20000, preco: 489.9, categoria: "camisa", quantidade: 0 },
+  { id: 20, nome: "Alemanha", descricao: "Camisa 2 da Seleção Alemã - GG", tamanho: "GG", ativo: true, estoque: 20000, preco: 489.9, categoria: "camisa", quantidade: 0 },
 
   // Espanha
-  { id: 6, nome: "Espanha", descricao: "Camisa da Seleção Espanhola - P", tamanho: "P", ativo: true, preco: 280.78, categoria: "camisa", estoque: 3000, quantidade: 0 },
-  { id: 6, nome: "Espanha", descricao: "Camisa da Seleção Espanhola - M", tamanho: "M", ativo: true, preco: 280.78, categoria: "camisa", estoque: 3000, quantidade: 0 },
-  { id: 6, nome: "Espanha", descricao: "Camisa da Seleção Espanhola - G", tamanho: "G", ativo: true, preco: 280.78, categoria: "camisa", estoque: 3000, quantidade: 0 },
+  { id: 21, nome: "Espanha", descricao: "Camisa da Seleção Espanhola - P", tamanho: "P", ativo: true, preco: 280.78, categoria: "camisa", estoque: 3000, quantidade: 0 },
+  { id: 22, nome: "Espanha", descricao: "Camisa da Seleção Espanhola - M", tamanho: "M", ativo: true, preco: 280.78, categoria: "camisa", estoque: 3000, quantidade: 0 },
+  { id: 23, nome: "Espanha", descricao: "Camisa da Seleção Espanhola - G", tamanho: "G", ativo: true, preco: 280.78, categoria: "camisa", estoque: 3000, quantidade: 0 },
 
   // EUA
-  { id: 7, nome: "EUA", descricao: "Camisa da Seleção Americana - P", tamanho: "P", ativo: true, preco: 349.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
-  { id: 7, nome: "EUA", descricao: "Camisa da Seleção Americana - M", tamanho: "M", ativo: true, preco: 349.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
-  { id: 7, nome: "EUA", descricao: "Camisa da Seleção Americana - G", tamanho: "G", ativo: true, preco: 349.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
+  { id: 24, nome: "EUA", descricao: "Camisa da Seleção Americana - P", tamanho: "P", ativo: true, preco: 349.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
+  { id: 25, nome: "EUA", descricao: "Camisa da Seleção Americana - M", tamanho: "M", ativo: true, preco: 349.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
+  { id: 26, nome: "EUA", descricao: "Camisa da Seleção Americana - G", tamanho: "G", ativo: true, preco: 349.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
 
   // Itália
-  { id: 8, nome: "Itália", descricao: "Camisa da Seleção Italiana - P", tamanho: "P", ativo: true, preco: 459.99, categoria: "camisa", estoque: 10000, quantidade: 0 },
-  { id: 8, nome: "Itália", descricao: "Camisa da Seleção Italiana - M", tamanho: "M", ativo: true, preco: 459.99, categoria: "camisa", estoque: 10000, quantidade: 0 },
-  { id: 8, nome: "Itália", descricao: "Camisa da Seleção Italiana - G", tamanho: "G", ativo: true, preco: 459.99, categoria: "camisa", estoque: 10000, quantidade: 0 },
-  { id: 8, nome: "Itália", descricao: "Camisa da Seleção Italiana - GG", tamanho: "GG", ativo: true, preco: 459.99, categoria: "camisa", estoque: 10000, quantidade: 0 },
+  { id: 27, nome: "Itália", descricao: "Camisa da Seleção Italiana - P", tamanho: "P", ativo: true, preco: 459.99, categoria: "camisa", estoque: 10000, quantidade: 0 },
+  { id: 28, nome: "Itália", descricao: "Camisa da Seleção Italiana - M", tamanho: "M", ativo: true, preco: 459.99, categoria: "camisa", estoque: 10000, quantidade: 0 },
+  { id: 29, nome: "Itália", descricao: "Camisa da Seleção Italiana - G", tamanho: "G", ativo: true, preco: 459.99, categoria: "camisa", estoque: 10000, quantidade: 0 },
+  { id: 30, nome: "Itália", descricao: "Camisa da Seleção Italiana - GG", tamanho: "GG", ativo: true, preco: 459.99, categoria: "camisa", estoque: 10000, quantidade: 0 },
 
   // Japão
-  { id: 9, nome: "Japão", descricao: "Camisa da Seleção Japonesa - P", tamanho: "P", ativo: true, preco: 349.9, categoria: "camisa", estoque: 2000, quantidade: 0 },
-  { id: 9, nome: "Japão", descricao: "Camisa da Seleção Japonesa - M", tamanho: "M", ativo: true, preco: 349.9, categoria: "camisa", estoque: 2000, quantidade: 0 },
+  { id: 31, nome: "Japão", descricao: "Camisa da Seleção Japonesa - P", tamanho: "P", ativo: true, preco: 349.9, categoria: "camisa", estoque: 2000, quantidade: 0 },
+  { id: 32, nome: "Japão", descricao: "Camisa da Seleção Japonesa - M", tamanho: "M", ativo: true, preco: 349.9, categoria: "camisa", estoque: 2000, quantidade: 0 },
 
   // México
-  { id: 10, nome: "México", descricao: "Camisa da Seleção Mexicana - P", tamanho: "P", ativo: true, preco: 329.9, categoria: "camisa", estoque: 1450, quantidade: 0 },
-  { id: 10, nome: "México", descricao: "Camisa da Seleção Mexicana - M", tamanho: "M", ativo: true, preco: 329.9, categoria: "camisa", estoque: 1450, quantidade: 0 },
-  { id: 10, nome: "México", descricao: "Camisa da Seleção Mexicana - G", tamanho: "G", ativo: true, preco: 329.9, categoria: "camisa", estoque: 1450, quantidade: 0 },
+  { id: 33, nome: "México", descricao: "Camisa da Seleção Mexicana - P", tamanho: "P", ativo: true, preco: 329.9, categoria: "camisa", estoque: 1450, quantidade: 0 },
+  { id: 34, nome: "México", descricao: "Camisa da Seleção Mexicana - M", tamanho: "M", ativo: true, preco: 329.9, categoria: "camisa", estoque: 1450, quantidade: 0 },
+  { id: 35, nome: "México", descricao: "Camisa da Seleção Mexicana - G", tamanho: "G", ativo: true, preco: 329.9, categoria: "camisa", estoque: 1450, quantidade: 0 },
 
   // Portugal
-  { id: 11, nome: "Portugal", descricao: "Camisa da Seleção Portuguesa - P", tamanho: "P", ativo: true, preco: 299.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
-  { id: 11, nome: "Portugal", descricao: "Camisa da Seleção Portuguesa - M", tamanho: "M", ativo: true, preco: 299.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
-  { id: 11, nome: "Portugal", descricao: "Camisa da Seleção Portuguesa - G", tamanho: "G", ativo: true, preco: 299.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
-  { id: 11, nome: "Portugal", descricao: "Camisa da Seleção Portuguesa - GG", tamanho: "GG", ativo: true, preco: 299.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
+  { id: 36, nome: "Portugal", descricao: "Camisa da Seleção Portuguesa - P", tamanho: "P", ativo: true, preco: 299.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
+  { id: 37, nome: "Portugal", descricao: "Camisa da Seleção Portuguesa - M", tamanho: "M", ativo: true, preco: 299.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
+  { id: 38, nome: "Portugal", descricao: "Camisa da Seleção Portuguesa - G", tamanho: "G", ativo: true, preco: 299.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
+  { id: 39, nome: "Portugal", descricao: "Camisa da Seleção Portuguesa - GG", tamanho: "GG", ativo: true, preco: 299.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
 
   // Inglaterra
-  { id: 12, nome: "Inglaterra", descricao: "Camisa da Seleção Inglesa - P", tamanho: "P", ativo: true, preco: 359.99, categoria: "camisa", estoque: 5000, quantidade: 0 },
-  { id: 12, nome: "Inglaterra", descricao: "Camisa da Seleção Inglesa - M", tamanho: "M", ativo: true, preco: 359.99, categoria: "camisa", estoque: 5000, quantidade: 0 },
-  { id: 12, nome: "Inglaterra", descricao: "Camisa da Seleção Inglesa - G", tamanho: "G", ativo: true, preco: 359.99, categoria: "camisa", estoque: 5000, quantidade: 0 }
+  { id: 40, nome: "Inglaterra", descricao: "Camisa da Seleção Inglesa - P", tamanho: "P", ativo: true, preco: 359.99, categoria: "camisa", estoque: 5000, quantidade: 0 },
+  { id: 41, nome: "Inglaterra", descricao: "Camisa da Seleção Inglesa - M", tamanho: "M", ativo: true, preco: 359.99, categoria: "camisa", estoque: 5000, quantidade: 0 },
+  { id: 42, nome: "Inglaterra", descricao: "Camisa da Seleção Inglesa - G", tamanho: "G", ativo: true, preco: 359.99, categoria: "camisa", estoque: 5000, quantidade: 0 }
 
 ];
 
@@ -108,7 +108,7 @@ function renderizarProdutos() {
                             </div>
                         <div class="card_description_body">
                             <p>${produto.descricao}</p>
-                            ${produto.tamanho ? `<p><b>Tamanhos:</b> ${produto.tamanho.join(', ')}</p>` : ''}
+                            <p><b>Tamanho:</b> ${produto.tamanho}</p>
                         </div>
                         </div>
 
@@ -317,7 +317,7 @@ function renderizarCarrinho() {
                <img src="assets/img/${getImagePorNome(carrinho[f].nome)}" alt="${carrinho[f].nome}">
                 <div class="description_body"> 
                     <p>${carrinho[f].descricao}</p>
-                    ${carrinho[f].tamanho ? `<p><b>Tamanhos:</b> ${carrinho[f].tamanho.join(', ')}</p>` : ''}
+                    <p><b>Tamanho:</b> ${carrinho[f].tamanho}</p>
                 </div>
             </div>
 
