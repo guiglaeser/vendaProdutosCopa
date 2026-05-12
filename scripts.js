@@ -186,7 +186,7 @@ function adicionarAoCarrinho(idProduto) {
                 salvarCarrinho();
 
                 Swal.fire ({
-                    title: '',
+                    title: 'Produto adicionado!',
                     text: '',
                     icon: 'success',
                     showConfirmButton: false,
@@ -224,7 +224,7 @@ function adicionarAoCarrinho(idProduto) {
                 produtos[h] += produto3;
 
                 Swal.fire ({
-                    title: 'Produto adicionado com sucesso!',
+                    title: 'Produto adicionado!',
                     text: '',
                     icon: 'success',
                     showConfirmButton: false,
