@@ -5,78 +5,19 @@ function salvarCarrinho() {
 }
 
 var produtos = [
-  {
-    id: 1,
-    nome: "Álbum de Figurinhas",
-    descricao: "Álbum de figurinhas da Copa do Mundo 2026 - Capa Dura Ouro",
-    estoque: 2000,
-    categoria: "album",
-    preco: 79.9,
-    ativo: true,
-    quantidade: 0
-  },
-  // Brasil
-  { id: 2, nome: "Brasil", descricao: "Camisa da Seleção Brasileira - P", tamanho: "P", estoque: 15000, preco: 389.9, categoria: "camisa", ativo: true, quantidade: 0 },
-  { id: 3, nome: "Brasil", descricao: "Camisa da Seleção Brasileira - M", tamanho: "M", estoque: 15000, preco: 419.9, categoria: "camisa", ativo: true, quantidade: 0 },
-  { id: 4, nome: "Brasil", descricao: "Camisa da Seleção Brasileira - G", tamanho: "G", estoque: 15000, preco: 439.9, categoria: "camisa", ativo: true, quantidade: 0 },
-  { id: 5, nome: "Brasil", descricao: "Camisa da Seleção Brasileira - GG", tamanho: "GG", estoque: 15000, preco: 459.9, categoria: "camisa", ativo: true, quantidade: 0 },
+  {id: 1, nome: "Álbum de Figurinhas", descricao: "Álbum de figurinhas da Copa do Mundo 2026 - Capa Dura Ouro", estoque: 20000, categoria: "album", precos: 139.9, ativo: true, quantidade: 0},
+  { id: 2, nome: "Brasil", descricao: "Camisa da Seleção Brasileira", tamanhos: ['P', 'M', 'G', 'GG'], estoque: [2000, 5000, 10000, 15000], precos: [248.2, 264.3, 339.99, 389.9], categoria: "camisa", ativo: true, quantidade: 0, tamanho: []},
+  { id: 3, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai", tamanhos: ['P', 'M', 'G', 'GG', 'G1'], estoque: [2000, 6000, 12000, 14000, 3000], ativo: true, precos: [170.99, 215.8, 249.99, 272.2, 299.9], categoria: "camisa", quantidade: 0, tamanho: []},
+  { id: 4, nome: "Argentina", descricao: "Camisa da Seleção Argentina", tamanhos: ['P', 'M', 'G', 'GG', 'G1', 'G2'], ativo: true, precos: [249.9, 269.99, 299.9, 329.9, 355.7, 382.40], estoque: [3000, 6000, 10000, 14000, 5000, 9000], categoria: "camisa", quantidade: 0, tamanho: []},
+  { id: 5, nome: "Alemanha", descricao: "Camisa 2 da Seleção Alemã", tamanhos: ['P', 'M', 'G', 'GG'], ativo: true, estoque: [6000, 10000, 15000, 20000], precos: [320, 359.9, 429.99, 489.9], categoria: "camisa", quantidade: 0, tamanho: []},
+  { id: 6, nome: "Espanha", descricao: "Camisa da Seleção Espanhola", tamanhos: ['P', 'M', 'G'], ativo: true, precos: [280.78, 315.9, 339.99], categoria: "camisa", estoque: [3000, 4000, 10000], quantidade: 0, tamanho: []},
+  { id: 7, nome: "EUA", descricao: "Camisa da Seleção Americana", tamanhos: ['P', 'M', 'G'], ativo: true, precos: [259.9, 288.7, 329.99], categoria: "camisa", estoque: [4000, 2000, 8000], quantidade: 0, tamanho: []},
+  { id: 8, nome: "Itália", descricao: "Camisa da Seleção Italiana", tamanhos: ['P', 'M', 'G', 'GG'], ativo: true, precos: [239.70, 267.9, 378.7, 459.99], categoria: "camisa", estoque: [5000, 20000, 15000, 10000], quantidade: 0, tamanho: []},
+  { id: 9, nome: "Japão", descricao: "Camisa da Seleção Japonesa", tamanhos: ['P', 'M'], ativo: true, precos: [229.9, 269.99], categoria: "camisa", estoque: [2000, 4000], quantidade: 0, tamanho: []},
+  { id: 10, nome: "México", descricao: "Camisa da Seleção Mexicana", tamanhos: ['P', 'M', 'G'], ativo: true, precos: [245.9, 279.9, 329.9], categoria: "camisa", estoque: [1450, 3000, 5000], quantidade: 0, tamanho: []},
+  { id: 11, nome: "Portugal", descricao: "Camisa da Seleção Portuguesa", tamanhos: ['P', 'M', 'G', 'GG'], ativo: true, precos: [259.9, 299.99, 320.99, 365.8], categoria: "camisa", estoque: [4000, 3000 ,5000, 10000], quantidade: 0, tamanho: []},
+  { id: 12, nome: "Inglaterra", descricao: "Camisa da Seleção Inglesa", tamanhos: ['P', 'M', 'G'], ativo: true, precos: [210.15, 270, 329.99], categoria: "camisa", estoque: [5000, 12000, 15000], quantidade: 0, tamanho: []},
 
-  // Uruguai
-  { id: 6, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai - P", tamanho: "P", estoque: 20000, ativo: true, preco: 170.99, categoria: "camisa", quantidade: 0 },
-  { id: 7, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai - M", tamanho: "M", estoque: 20000, ativo: true, preco: 207.99, categoria: "camisa", quantidade: 0 },
-  { id: 8, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai - G", tamanho: "G", estoque: 20000, ativo: true, preco: 237.99, categoria: "camisa", quantidade: 0 },
-  { id: 9, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai - GG", tamanho: "GG", estoque: 20000, ativo: true, preco: 267.99, categoria: "camisa", quantidade: 0 },
-  { id: 10, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai - G1", tamanho: "G1", estoque: 20000, ativo: true, preco: 287.99, categoria: "camisa", quantidade: 0 },
-
-  // Argentina
-  { id: 11, nome: "Argentina", descricao: "Camisa da Seleção Argentina - P", tamanho: "P", ativo: true, preco: 249.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
-  { id: 12, nome: "Argentina", descricao: "Camisa da Seleção Argentina - M", tamanho: "M", ativo: true, preco: 269.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
-  { id: 13, nome: "Argentina", descricao: "Camisa da Seleção Argentina - G", tamanho: "G", ativo: true, preco: 299.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
-  { id: 14, nome: "Argentina", descricao: "Camisa da Seleção Argentina - GG", tamanho: "GG", ativo: true, preco: 319.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
-  { id: 15, nome: "Argentina", descricao: "Camisa da Seleção Argentina - G1", tamanho: "G1", ativo: true, preco: 349.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
-  { id: 16, nome: "Argentina", descricao: "Camisa da Seleção Argentina - G2", tamanho: "G2", ativo: true, preco: 369.9, estoque: 3000, categoria: "camisa", quantidade: 0 },
-
-  // Alemanha
-  { id: 17, nome: "Alemanha", descricao: "Camisa 2 da Seleção Alemã - P", tamanho: "P", ativo: true, estoque: 20000, preco: 489.9, categoria: "camisa", quantidade: 0 },
-  { id: 18, nome: "Alemanha", descricao: "Camisa 2 da Seleção Alemã - M", tamanho: "M", ativo: true, estoque: 20000, preco: 489.9, categoria: "camisa", quantidade: 0 },
-  { id: 19, nome: "Alemanha", descricao: "Camisa 2 da Seleção Alemã - G", tamanho: "G", ativo: true, estoque: 20000, preco: 489.9, categoria: "camisa", quantidade: 0 },
-  { id: 20, nome: "Alemanha", descricao: "Camisa 2 da Seleção Alemã - GG", tamanho: "GG", ativo: true, estoque: 20000, preco: 489.9, categoria: "camisa", quantidade: 0 },
-
-  // Espanha
-  { id: 21, nome: "Espanha", descricao: "Camisa da Seleção Espanhola - P", tamanho: "P", ativo: true, preco: 280.78, categoria: "camisa", estoque: 3000, quantidade: 0 },
-  { id: 22, nome: "Espanha", descricao: "Camisa da Seleção Espanhola - M", tamanho: "M", ativo: true, preco: 280.78, categoria: "camisa", estoque: 3000, quantidade: 0 },
-  { id: 23, nome: "Espanha", descricao: "Camisa da Seleção Espanhola - G", tamanho: "G", ativo: true, preco: 280.78, categoria: "camisa", estoque: 3000, quantidade: 0 },
-
-  // EUA
-  { id: 24, nome: "EUA", descricao: "Camisa da Seleção Americana - P", tamanho: "P", ativo: true, preco: 349.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
-  { id: 25, nome: "EUA", descricao: "Camisa da Seleção Americana - M", tamanho: "M", ativo: true, preco: 349.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
-  { id: 26, nome: "EUA", descricao: "Camisa da Seleção Americana - G", tamanho: "G", ativo: true, preco: 349.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
-
-  // Itália
-  { id: 27, nome: "Itália", descricao: "Camisa da Seleção Italiana - P", tamanho: "P", ativo: true, preco: 459.99, categoria: "camisa", estoque: 10000, quantidade: 0 },
-  { id: 28, nome: "Itália", descricao: "Camisa da Seleção Italiana - M", tamanho: "M", ativo: true, preco: 459.99, categoria: "camisa", estoque: 10000, quantidade: 0 },
-  { id: 29, nome: "Itália", descricao: "Camisa da Seleção Italiana - G", tamanho: "G", ativo: true, preco: 459.99, categoria: "camisa", estoque: 10000, quantidade: 0 },
-  { id: 30, nome: "Itália", descricao: "Camisa da Seleção Italiana - GG", tamanho: "GG", ativo: true, preco: 459.99, categoria: "camisa", estoque: 10000, quantidade: 0 },
-
-  // Japão
-  { id: 31, nome: "Japão", descricao: "Camisa da Seleção Japonesa - P", tamanho: "P", ativo: true, preco: 349.9, categoria: "camisa", estoque: 2000, quantidade: 0 },
-  { id: 32, nome: "Japão", descricao: "Camisa da Seleção Japonesa - M", tamanho: "M", ativo: true, preco: 349.9, categoria: "camisa", estoque: 2000, quantidade: 0 },
-
-  // México
-  { id: 33, nome: "México", descricao: "Camisa da Seleção Mexicana - P", tamanho: "P", ativo: true, preco: 329.9, categoria: "camisa", estoque: 1450, quantidade: 0 },
-  { id: 34, nome: "México", descricao: "Camisa da Seleção Mexicana - M", tamanho: "M", ativo: true, preco: 329.9, categoria: "camisa", estoque: 1450, quantidade: 0 },
-  { id: 35, nome: "México", descricao: "Camisa da Seleção Mexicana - G", tamanho: "G", ativo: true, preco: 329.9, categoria: "camisa", estoque: 1450, quantidade: 0 },
-
-  // Portugal
-  { id: 36, nome: "Portugal", descricao: "Camisa da Seleção Portuguesa - P", tamanho: "P", ativo: true, preco: 299.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
-  { id: 37, nome: "Portugal", descricao: "Camisa da Seleção Portuguesa - M", tamanho: "M", ativo: true, preco: 299.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
-  { id: 38, nome: "Portugal", descricao: "Camisa da Seleção Portuguesa - G", tamanho: "G", ativo: true, preco: 299.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
-  { id: 39, nome: "Portugal", descricao: "Camisa da Seleção Portuguesa - GG", tamanho: "GG", ativo: true, preco: 299.99, categoria: "camisa", estoque: 4000, quantidade: 0 },
-
-  // Inglaterra
-  { id: 40, nome: "Inglaterra", descricao: "Camisa da Seleção Inglesa - P", tamanho: "P", ativo: true, preco: 359.99, categoria: "camisa", estoque: 5000, quantidade: 0 },
-  { id: 41, nome: "Inglaterra", descricao: "Camisa da Seleção Inglesa - M", tamanho: "M", ativo: true, preco: 359.99, categoria: "camisa", estoque: 5000, quantidade: 0 },
-  { id: 42, nome: "Inglaterra", descricao: "Camisa da Seleção Inglesa - G", tamanho: "G", ativo: true, preco: 359.99, categoria: "camisa", estoque: 5000, quantidade: 0 }
 
 ];
 
@@ -94,38 +35,38 @@ function renderizarProdutos() {
         const produtoHTML = `
         <section class="produto">
                 <article class="card">
-                <div class="card_header">
+                    <div class="card_header">
                         <header>
                             <h2>${produto.nome}</h2>
-                            </header>
-                            </div>
-                            <div class="card_image">
+                        </header>
+                    </div>
+                        <div class="card_image">
                             <img src="assets/img/${getImagePorNome(produto.nome)}" alt="${produto.nome}">
-                            </div>
-                            <div class="card_description">
-                            <div class="card_description_header">
-                            <h4>Descrição:</h4>
-                            </div>
-                        <div class="card_description_body">
-                            <p>${produto.descricao}</p>
-                             ${produto.tamanho ? `<p><b>Tamanho:</b> ${produto.tamanho}</p>` : ''}
                         </div>
+                        <div class="card_description">
+                            <div class="card_description_header">
+                                <h4>Descrição:</h4>
+                            </div>
+                            <div class="card_description_body">
+                                <p>${produto.descricao}</p>
+                                ${produto.tamanhos ? `<p><b>Tamanhos:</b> ${produto.tamanhos.join(', ')}</p>` : ''}
+                            </div>
                         </div>
 
                         <div class="card_footer">
-                        <div class="card_price">
-                            <span><h2><b>R$ ${produto.preco.toFixed(2).replace('.', ',')}</b></h2></span>
+                            <div class="card_price">
+                                <span><h3><b>Preço: </b> vide carrinho</h3></span>
                             </div>
-                        <div class="actions">
-                        <button class="actions" onclick="comprar(${produto.id})">
-                                Comprar
+                            <div class="actions">
+                                <button class="actions" onclick="comprar(${produto.id})">
+                                    Comprar
                                 </button>
                                 <button class="actions" onclick="adicionarAoCarrinho(${produto.id})">
-                                Adicionar ao carrinho
+                                    Adicionar ao carrinho
                                 </button>
-                                </div>
-                                </div>
-                                </article>
+                            </div>
+                        </div>
+                </article>
             </section>
         `;
 
@@ -173,62 +114,75 @@ function comprar() {
 
 function adicionarAoCarrinho(idProduto) {
     let produtoEncontrado = false;
-
+    
     if(carrinho.length==0) {
-
+        
         for(let i = 0;i < produtos.length; i++) {
-            let produto = produtos[i];
-            if(parseInt(idProduto)==produto.id && produto.estoque > 0 && produto.ativo==true) {
+            let produto1 = produtos[i];
+            
+            let totalEstoque1 = 0;
+            if(produto1.categoria == "camisa") {
+                for (let w = 0; w < produto1.estoque.length; w++) {
+                    totalEstoque1 += produto1.estoque[w];
+                }
+            }
+            
+            if(parseInt(idProduto)==produto1.id && produto1.ativo==true && (produto1.categoria == "camisa" ? totalEstoque1>1 : produto1.estoque>1)) {
                 produtoEncontrado = true;
-                produto.quantidade++, produto.estoque--;
-                produtos[i] += produto;
-                carrinho.push(produto);
+                produto1.quantidade++;
+                carrinho.push(produto1);
                 salvarCarrinho();
-
+                
                 Swal.fire ({
                     title: 'Produto adicionado!',
                     text: '',
                     icon: 'success',
                     showConfirmButton: false,
-                    timer: 1400
+                    timer: 1100
                 })
-
+                
                 break;
             }
         }
     } else {
-
+        
         for(let j = 0; j < carrinho.length; j++) {
             let produto2 = carrinho[j];
-            if(parseInt(idProduto)==produto2.id) {
+            if(parseInt(idProduto) == produto2.id) {
                 Swal.fire ({
                     title:'Produto já adicionado!',
                     text:'Altere a quantidade no carrinho.',
                     icon: 'warning',
-                    showCancelButton: false,
                     confirmButtonText: 'Ok',
                     confirmButtonColor: 'rgb(0, 160, 0)'
-                });
+                })
                 produtoEncontrado = true;
                 salvarCarrinho();
                 break;
             }
         }
-
+        
         for(let h = 0; h < produtos.length; h++) {
             let produto3 = produtos[h];
-            if(parseInt(idProduto)==produto3.id && produto3.estoque > 0 && produto3.ativo==true) {
+            
+            let totalEstoque2 = 0;
+            if(produto3.categoria == "camisa") {
+                for (let q = 0; q < produto3.estoque.length; q++) {
+                    totalEstoque2+=produto3.estoque[q];                    
+                }
+            }
+            
+            if(parseInt(idProduto) == produto3.id && produto3.ativo == true && (produto3.categoria == "camisa" ? totalEstoque2>1 : produto3.estoque>1)) {
                 produtoEncontrado = true;
-                produto3.quantidade++, produto3.estoque--;
+                produto3.quantidade++;
                 carrinho.push(produto3);
-                produtos[h] += produto3;
 
                 Swal.fire ({
                     title: 'Produto adicionado!',
                     text: '',
                     icon: 'success',
                     showConfirmButton: false,
-                    timer: 1400
+                    timer: 1100
                 })
                         
                 salvarCarrinho();
@@ -241,7 +195,9 @@ function adicionarAoCarrinho(idProduto) {
             Swal.fire ({
             title: 'Atenção!',
             text: 'Produto fora de estoque ou inativo.',
-            icon: 'error'
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            confirmButtonColor: 'rgb(0, 150, 0)'
             });
         }
     }
@@ -257,7 +213,9 @@ function limparCarrinho() {
 
 function renderizarCarrinho() {
     const container = document.getElementById('produtosCarrinho');
+    let containerTamanhos = document.getElementById('tamanhos');
     let produtoHTML = '';
+    let tamanhosHTML = '';
 
     if(!container) return;
 
@@ -273,10 +231,30 @@ function renderizarCarrinho() {
         `
     }
     
+    /* ${carrinho[f].tamanhos ? `<p><b>Tamanhos:</b> ${carrinho[f].tamanhos.join(', ')}</p>`: '' } */
     
-    
+
     for(let f = 0; f < carrinho.length; f++) {
-    
+
+        containerTamanhos = '';
+
+        if(carrinho[f].tamanhos) {
+            for (let i = 0; i < carrinho[f].tamanhos.length; i++) {
+            
+                tamanhosHTML = `
+                    <div id="segmentoTamanho">
+                        <input type="checkbox" id="tamanhoProduto" name="${carrinho[f].tamanhos[i]}" value="${carrinho[f].tamanhos[i]}" onclick="selecionarTamanho([${carrinho[f].id}, '${carrinho[f].tamanhos[i]}'])"> 
+                        <label for="tamanhoProduto">${carrinho[f].tamanhos[i]}</label>
+                    </div>
+                `;
+            
+                containerTamanhos += tamanhosHTML;
+                
+            }
+        }
+        
+//        <span><h2><b>R$ ${carrinho[f].preco.toFixed(2).replace('.', ',')}</b></h2></span>
+        
         produtoHTML = `
         <section class="produtoCarrinho">
             <article class="card_carrinho">
@@ -284,14 +262,18 @@ function renderizarCarrinho() {
                <img src="assets/img/${getImagePorNome(carrinho[f].nome)}" alt="${carrinho[f].nome}">
                 <div class="description_body"> 
                     <p>${carrinho[f].descricao}</p>
-                     ${carrinho[f].tamanho ? `<p><b>Tamanho:</b> ${carrinho[f].tamanho}</p>`: '' }
+                    ${containerTamanhos == '' ? '' : 
+                        `
+                        <div id="tamanhos" class="container">
+                            ${containerTamanhos}
+                        </div>
+
+                        `}
                 </div>
             </div>
 
             <div class="card_footer_carrinho">
-                <div class="card_price_carrinho">
-                    <span><h2><b>R$ ${carrinho[f].preco.toFixed(2).replace('.', ',')}</b></h2></span>
-                </div>
+                <div class="card_price_carrinho"></div>
                 <div class="quantidade">
                     <button onclick="maisProduto(${carrinho[f].id})" id="mais"></button>
                     <p>${carrinho[f].quantidade}</p>
@@ -324,7 +306,6 @@ function maisProduto(idProdutoCarrinho) {
     carrinho.forEach((produto) => {
         if(produto.id == idProdutoCarrinho) {
             produto.quantidade++;
-            produto.estoque--;
             salvarCarrinho();
             calcularTotal();    
         }
@@ -365,11 +346,54 @@ function excluirProduto(idCarrinhoExclusao) {
             calcularTotal();
         }
     };
-
+    
     document.addEventListener('click', function() {
         renderizarCarrinho();
     });
+    
+}
 
+function selecionarTamanho(tamProduto) {
+    const checkbox = document.querySelector(`input[name=${tamProduto[1]}]`);
+    const precoCarrinho = document.querySelector('.card_price_carrinho');
+
+    if(!precoCarrinho) return;
+
+    precoCarrinho.innerHTML = '';
+
+    let precoHTML = '';
+    let idProduto = tamProduto[0];
+    let produtoTam = tamProduto[1];
+    let preco = null;
+
+    if (checkbox.checked) {
+        carrinho.forEach ((produto) => {
+            let indexTamanho = produto.tamanhos.indexOf(produtoTam);
+            let estoqueProduto = produto.estoque[indexTamanho];
+            if(produto.id == idProduto && estoqueProduto < 0) {
+                preco += produto.precos[indexTamanho];
+                produto.tamanho.push([produtoTam, produto.precos[indexTamanho]]);
+                produto.estoque[indexTamanho]--;
+                precoHTML = 
+                `
+                <span><h4> R$ ${preco}</h4></span>
+                `
+                precoCarrinho.innerHTML += precoHTML;
+            } else {
+                Swal.fire ({
+                    title: 'Erro!',
+                    text: 'Tamanho fora de estoque.',
+                    icon: 'error',
+                    confirmButtonText: 'Ok', 
+                    confirmButtonColor: 'rgb(0, 150, 0)'
+                });
+                checkbox.checked = false;
+            }
+        });
+
+    }
+
+    
 }
 
 function calcularTotal() {
@@ -387,10 +411,10 @@ function calcularTotal() {
 
     let total = 0;
 
-    carrinho.forEach((produto) => {
-        total += (produto.preco * produto.quantidade);
+    /* carrinho.forEach((produto) => {
+        //Refazer a lógica do cálculo do total
     })
-
+ */
     let valorFormatado = total.toLocaleString('pt-BR', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
@@ -400,7 +424,7 @@ function calcularTotal() {
         totalHTML = `
             <div id="produtosTotal" class="container">
                 <h3><b>Total: </b></h3>
-                <h3>R$ ${valorFormatado}</h3>
+                <h3>R$ ${valorFormatado=0}</h3>
             </div>
         `;
 
@@ -424,9 +448,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function resetProduto(idProduto) {
     
+    /* const containerTamanhos = document.g */
+
     carrinho.forEach((produto) => {
         if(produto.id == idProduto) {
-            produto.estoque += produto.quantidade-1
             produto.quantidade = 1;
             calcularTotal();
             salvarCarrinho();
