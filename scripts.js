@@ -114,6 +114,7 @@ function comprar() {
 
 function adicionarAoCarrinho(idProduto) {
     let produtoEncontrado = false;
+    let produtoCarrinho = false;
     
     if(carrinho.length==0) {
         
@@ -157,36 +158,39 @@ function adicionarAoCarrinho(idProduto) {
                     confirmButtonColor: 'rgb(0, 160, 0)'
                 })
                 produtoEncontrado = true;
+                produtoCarrinho = true;
                 salvarCarrinho();
                 break;
             }
         }
         
-        for(let h = 0; h < produtos.length; h++) {
-            let produto3 = produtos[h];
+        if(!produtoCarrinho){
+            for(let h = 0; h < produtos.length; h++) {
+                let produto3 = produtos[h];
             
-            let totalEstoque2 = 0;
-            if(produto3.categoria == "camisa") {
-                for (let q = 0; q < produto3.estoque.length; q++) {
-                    totalEstoque2+=produto3.estoque[q];                    
+                let totalEstoque2 = 0;
+                if(produto3.categoria == "camisa") {
+                    for (let q = 0; q < produto3.estoque.length; q++) {
+                        totalEstoque2+=produto3.estoque[q];                    
+                    }
                 }
-            }
             
-            if(parseInt(idProduto) == produto3.id && produto3.ativo == true && (produto3.categoria == "camisa" ? totalEstoque2>1 : produto3.estoque>1)) {
-                produtoEncontrado = true;
-                produto3.quantidade++;
-                carrinho.push(produto3);
+                if(parseInt(idProduto) == produto3.id && produto3.ativo == true && (produto3.categoria == "camisa" ? totalEstoque2>1 : produto3.estoque>1)) {
+                    produtoEncontrado = true;
+                    produto3.quantidade++;
+                    carrinho.push(produto3);
 
-                Swal.fire ({
-                    title: 'Produto adicionado!',
-                    text: '',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    timer: 1100
-                })
-                        
-                salvarCarrinho();
-                break;
+                    Swal.fire ({
+                        title: 'Produto adicionado!',
+                        text: '',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1100
+                    })
+                            
+                    salvarCarrinho();
+                    break;
+                }
             }
         }
 
@@ -194,7 +198,7 @@ function adicionarAoCarrinho(idProduto) {
         if(!produtoEncontrado){
             Swal.fire ({
             title: 'Atenção!',
-            text: 'Produto fora de estoque ou inativo.',
+            text: 'Produto fora de estoque.',
             icon: 'warning',
             confirmButtonText: 'Ok',
             confirmButtonColor: 'rgb(0, 150, 0)'
@@ -353,6 +357,12 @@ function excluirProduto(idCarrinhoExclusao) {
     
 }
 
+let checkboxState = JSON.parse(localStorage.getItem('checkboxState')) || '';
+
+function saveState () {
+    localStorage.setItem('checkboxState', JSON.stringify(checkboxState))
+}
+
 function selecionarTamanho(tamProduto) {
     const checkbox = document.querySelector(`input[name=${tamProduto[1]}]`);
     const precoCarrinho = document.querySelector('.card_price_carrinho');
@@ -364,21 +374,33 @@ function selecionarTamanho(tamProduto) {
     let precoHTML = '';
     let idProduto = tamProduto[0];
     let produtoTam = tamProduto[1];
-    let preco = null;
+    let preco = 0;
 
     if (checkbox.checked) {
-        carrinho.forEach ((produto) => {
+        carrinho.forEach(produto => {
+            
+            let tamanhoExistente = false;
+
+            for (let i = 0; i < produto.tamanho.length; i++) {
+                if(produto.tamanho[i][0] == produtoTam) {
+                    tamanhoExistente = true;
+                    break;
+                }
+            }
+            
             let indexTamanho = produto.tamanhos.indexOf(produtoTam);
             let estoqueProduto = produto.estoque[indexTamanho];
-            if(produto.id == idProduto && estoqueProduto < 0) {
-                preco += produto.precos[indexTamanho];
+            if(produto.id == idProduto && estoqueProduto > 0 && !tamanhoExistente) {
                 produto.tamanho.push([produtoTam, produto.precos[indexTamanho]]);
                 produto.estoque[indexTamanho]--;
+                for (let i = 0; i < produto.tamanho.length; i++) {
+                    preco += (produto.tamanho[i][1]*produto.quantidade);    
+                }
                 precoHTML = 
                 `
-                <span><h4> R$ ${preco}</h4></span>
+                    <span><h4> R$ ${preco.toFixed(2)}</h4></span>
                 `
-                precoCarrinho.innerHTML += precoHTML;
+                    precoCarrinho.innerHTML += precoHTML;                    
             } else {
                 Swal.fire ({
                     title: 'Erro!',
@@ -391,7 +413,24 @@ function selecionarTamanho(tamProduto) {
             }
         });
 
+    } else {
+        carrinho.forEach(produto => {
+            let tamanhoExclusao = produto.tamanho.indexOf(produtoTam);
+            let indexTamanhoExclusao = produto.tamanhos.indexOf(produtoTam)
+            produto.tamanho.splice(tamanhoExclusao, 1);
+            produto.estoque[indexTamanhoExclusao]+=produto.quantidade;
+            for (let i = 0; i < produto.tamanho.length; i++) {
+                preco += (produto.tamanho[i][1]*produto.quantidade);    
+            }
+            precoHTML = 
+            `
+                <span><h4> R$ ${preco>0 ? preco.toFixed(2) : '-'}</h4></span>
+            `
+            precoCarrinho.innerHTML += precoHTML; 
+        })
     }
+
+    return precoHTML;
 
     
 }
