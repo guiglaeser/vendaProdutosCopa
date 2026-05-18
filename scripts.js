@@ -1,7 +1,7 @@
-let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+let produto = JSON.parse(localStorage.getItem('carrinho')) || [];
 
 function salvarCarrinho() {
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    localStorage.setItem('carrinho', JSON.stringify(produto));
 }
 
 var produtos = [
@@ -23,14 +23,34 @@ var produtos = [
 
 function renderizarProdutos() {
     const container = document.getElementById('visualizacao');
+    let containerTamanhos = document.getElementById('tamanhos');
     
     if (!container) return;
-
+    
+    let produtoHTML = '';
+    let tamanhosHTML = '';
     container.innerHTML = '';
     
     produtos.forEach (produto => {
         
         if(!produto.ativo) return;
+
+        containerTamanhos = '';
+
+        if(produto.tamanhos) {
+            for (let i = 0; i < produto.tamanhos.length; i++) {
+            
+                tamanhosHTML = `
+                    <div id="segmentoTamanho">
+                        <input type="checkbox" id="tamanhoProduto" name="${produto.tamanhos[i]}" value="${produto.tamanhos[i]}" onclick="selecionarTamanho([${produto.id}, '${produto.tamanhos[i]}'])"> 
+                        <label for="tamanhoProduto">${produto.tamanhos[i]}</label>
+                    </div>
+                `;
+            
+                containerTamanhos += tamanhosHTML;
+                
+            }
+        }
 
         const produtoHTML = `
         <section class="produto">
@@ -49,14 +69,17 @@ function renderizarProdutos() {
                             </div>
                             <div class="card_description_body">
                                 <p>${produto.descricao}</p>
-                                ${produto.tamanhos ? `<p><b>Tamanhos:</b> ${produto.tamanhos.join(', ')}</p>` : ''}
+                               ${containerTamanhos == '' ? '' : 
+                                `
+                                <div id="tamanhos" class="container">
+                                    ${containerTamanhos}
+                                </div>
+
+                                `}
                             </div>
                         </div>
 
                         <div class="card_footer">
-                            <div class="card_price">
-                                <span><h3><b>Preço: </b> vide carrinho</h3></span>
-                            </div>
                             <div class="actions">
                                 <button class="actions" onclick="comprar(${produto.id})">
                                     Comprar
@@ -116,7 +139,7 @@ function adicionarAoCarrinho(idProduto) {
     let produtoEncontrado = false;
     let produtoCarrinho = false;
     
-    if(carrinho.length==0) {
+    if(produto.length==0) {
         
         for(let i = 0;i < produtos.length; i++) {
             let produto1 = produtos[i];
@@ -131,7 +154,7 @@ function adicionarAoCarrinho(idProduto) {
             if(parseInt(idProduto)==produto1.id && produto1.ativo==true && (produto1.categoria == "camisa" ? totalEstoque1>1 : produto1.estoque>1)) {
                 produtoEncontrado = true;
                 produto1.quantidade++;
-                carrinho.push(produto1);
+                produto.push(produto1);
                 salvarCarrinho();
                 
                 Swal.fire ({
@@ -147,8 +170,8 @@ function adicionarAoCarrinho(idProduto) {
         }
     } else {
         
-        for(let j = 0; j < carrinho.length; j++) {
-            let produto2 = carrinho[j];
+        for(let j = 0; j < produto.length; j++) {
+            let produto2 = produto[j];
             if(parseInt(idProduto) == produto2.id) {
                 Swal.fire ({
                     title:'Produto já adicionado!',
@@ -178,7 +201,7 @@ function adicionarAoCarrinho(idProduto) {
                 if(parseInt(idProduto) == produto3.id && produto3.ativo == true && (produto3.categoria == "camisa" ? totalEstoque2>1 : produto3.estoque>1)) {
                     produtoEncontrado = true;
                     produto3.quantidade++;
-                    carrinho.push(produto3);
+                    produto.push(produto3);
 
                     Swal.fire ({
                         title: 'Produto adicionado!',
@@ -208,7 +231,7 @@ function adicionarAoCarrinho(idProduto) {
 
 
 function limparCarrinho() {
-    carrinho = [];
+    produto = [];
     sessionStorage.removeItem('carrinho');
     calcularTotal();
     salvarCarrinho();
@@ -217,15 +240,12 @@ function limparCarrinho() {
 
 function renderizarCarrinho() {
     const container = document.getElementById('produtosCarrinho');
-    let containerTamanhos = document.getElementById('tamanhos');
-    let produtoHTML = '';
-    let tamanhosHTML = '';
 
     if(!container) return;
 
     container.innerHTML = '';
 
-    if(carrinho.length === 0) {
+    if(produto.length === 0) {
         container.innerHTML += `
             <div id="message" class="container">
                 <h2>O carrinho está vazio...</h2>
@@ -238,24 +258,7 @@ function renderizarCarrinho() {
     /* ${carrinho[f].tamanhos ? `<p><b>Tamanhos:</b> ${carrinho[f].tamanhos.join(', ')}</p>`: '' } */
     
 
-    for(let f = 0; f < carrinho.length; f++) {
-
-        containerTamanhos = '';
-
-        if(carrinho[f].tamanhos) {
-            for (let i = 0; i < carrinho[f].tamanhos.length; i++) {
-            
-                tamanhosHTML = `
-                    <div id="segmentoTamanho">
-                        <input type="checkbox" id="tamanhoProduto" name="${carrinho[f].tamanhos[i]}" value="${carrinho[f].tamanhos[i]}" onclick="selecionarTamanho([${carrinho[f].id}, '${carrinho[f].tamanhos[i]}'])"> 
-                        <label for="tamanhoProduto">${carrinho[f].tamanhos[i]}</label>
-                    </div>
-                `;
-            
-                containerTamanhos += tamanhosHTML;
-                
-            }
-        }
+    for(let f = 0; f < produto.length; f++) {
         
 //        <span><h2><b>R$ ${carrinho[f].preco.toFixed(2).replace('.', ',')}</b></h2></span>
         
@@ -263,30 +266,23 @@ function renderizarCarrinho() {
         <section class="produtoCarrinho">
             <article class="card_carrinho">
             <div class="card_description">
-               <img src="assets/img/${getImagePorNome(carrinho[f].nome)}" alt="${carrinho[f].nome}">
+               <img src="assets/img/${getImagePorNome(produto[f].nome)}" alt="${produto[f].nome}">
                 <div class="description_body"> 
-                    <p>${carrinho[f].descricao}</p>
-                    ${containerTamanhos == '' ? '' : 
-                        `
-                        <div id="tamanhos" class="container">
-                            ${containerTamanhos}
-                        </div>
-
-                        `}
+                    <p>${produto[f].descricao}</p>
                 </div>
             </div>
 
             <div class="card_footer_carrinho">
                 <div class="card_price_carrinho"></div>
                 <div class="quantidade">
-                    <button onclick="maisProduto(${carrinho[f].id})" id="mais"></button>
-                    <p>${carrinho[f].quantidade}</p>
-                    <button onclick="menosProduto(${carrinho[f].id})" id="menos"></button>
+                    <button onclick="maisProduto(${produto[f].id})" id="mais"></button>
+                    <p>${produto[f].quantidade}</p>
+                    <button onclick="menosProduto(${produto[f].id})" id="menos"></button>
                 </div>
 
                 <div class="actionsProduto">
-                    <button onclick="excluirProduto(${carrinho[f].id})" id="excluirProdutoCarrinho">Excluir produto</button>
-                    <button onclick="resetProduto(${carrinho[f].id})" id="resetarProduto">Reset</button>
+                    <button onclick="excluirProduto(${produto[f].id})" id="excluirProdutoCarrinho">Excluir produto</button>
+                    <button onclick="resetProduto(${produto[f].id})" id="resetarProduto">Reset</button>
                 </div>
                 
             </article>
@@ -307,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function maisProduto(idProdutoCarrinho) {
     
-    carrinho.forEach((produto) => {
+    produto.forEach((produto) => {
         if(produto.id == idProdutoCarrinho) {
             produto.quantidade++;
             salvarCarrinho();
@@ -323,7 +319,7 @@ function maisProduto(idProdutoCarrinho) {
 
 function menosProduto(idProdutoCarrinho) {
     
-    carrinho.forEach((produto) => {
+    produto.forEach((produto) => {
         if(produto.id == idProdutoCarrinho) {
             produto.quantidade > 1 ? produto.quantidade-- : produto.quantidade = 1;
             produto.estoque++;
@@ -342,10 +338,10 @@ function menosProduto(idProdutoCarrinho) {
 
 function excluirProduto(idCarrinhoExclusao) {
     
-    for (let i = 0; i < carrinho.length; i++) {
-        let exclusao = carrinho[i];
+    for (let i = 0; i < produto.length; i++) {
+        let exclusao = produto[i];
         if(exclusao.id==idCarrinhoExclusao) {
-            carrinho.splice(carrinho.indexOf(exclusao), 1);
+            produto.splice(produto.indexOf(exclusao), 1);
             salvarCarrinho();
             calcularTotal();
         }
@@ -355,12 +351,6 @@ function excluirProduto(idCarrinhoExclusao) {
         renderizarCarrinho();
     });
     
-}
-
-let checkboxState = JSON.parse(localStorage.getItem('checkboxState')) || '';
-
-function saveState () {
-    localStorage.setItem('checkboxState', JSON.stringify(checkboxState))
 }
 
 function selecionarTamanho(tamProduto) {
@@ -377,7 +367,7 @@ function selecionarTamanho(tamProduto) {
     let preco = 0;
 
     if (checkbox.checked) {
-        carrinho.forEach(produto => {
+        produto.forEach(produto => {
             
             let tamanhoExistente = false;
 
@@ -414,7 +404,7 @@ function selecionarTamanho(tamProduto) {
         });
 
     } else {
-        carrinho.forEach(produto => {
+        produto.forEach(produto => {
             let tamanhoExclusao = produto.tamanho.indexOf(produtoTam);
             let indexTamanhoExclusao = produto.tamanhos.indexOf(produtoTam)
             produto.tamanho.splice(tamanhoExclusao, 1);
@@ -459,7 +449,7 @@ function calcularTotal() {
         maximumFractionDigits: 2
     });
 
-    if(carrinho.length>0) {
+    if(produto.length>0) {
         totalHTML = `
             <div id="produtosTotal" class="container">
                 <h3><b>Total: </b></h3>
@@ -489,7 +479,7 @@ function resetProduto(idProduto) {
     
     /* const containerTamanhos = document.g */
 
-    carrinho.forEach((produto) => {
+    produto.forEach((produto) => {
         if(produto.id == idProduto) {
             produto.quantidade = 1;
             calcularTotal();
