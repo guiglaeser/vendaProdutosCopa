@@ -1,22 +1,22 @@
-let produto = JSON.parse(localStorage.getItem('carrinho')) || [];
+let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
 function salvarCarrinho() {
-    localStorage.setItem('carrinho', JSON.stringify(produto));
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
 }
 
 var produtos = [
-  {id: 1, nome: "Álbum de Figurinhas", descricao: "Álbum de figurinhas da Copa do Mundo 2026 - Capa Dura Ouro", estoque: 20000, categoria: "album", precos: 139.9, ativo: true, quantidade: 0},
-  { id: 2, nome: "Brasil", descricao: "Camisa da Seleção Brasileira", tamanhos: ['P', 'M', 'G', 'GG'], estoque: [2000, 5000, 10000, 15000], precos: [248.2, 264.3, 339.99, 389.9], categoria: "camisa", ativo: true, quantidade: 0, tamanho: []},
-  { id: 3, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai", tamanhos: ['P', 'M', 'G', 'GG', 'G1'], estoque: [2000, 6000, 12000, 14000, 3000], ativo: true, precos: [170.99, 215.8, 249.99, 272.2, 299.9], categoria: "camisa", quantidade: 0, tamanho: []},
-  { id: 4, nome: "Argentina", descricao: "Camisa da Seleção Argentina", tamanhos: ['P', 'M', 'G', 'GG', 'G1', 'G2'], ativo: true, precos: [249.9, 269.99, 299.9, 329.9, 355.7, 382.40], estoque: [3000, 6000, 10000, 14000, 5000, 9000], categoria: "camisa", quantidade: 0, tamanho: []},
-  { id: 5, nome: "Alemanha", descricao: "Camisa 2 da Seleção Alemã", tamanhos: ['P', 'M', 'G', 'GG'], ativo: true, estoque: [6000, 10000, 15000, 20000], precos: [320, 359.9, 429.99, 489.9], categoria: "camisa", quantidade: 0, tamanho: []},
-  { id: 6, nome: "Espanha", descricao: "Camisa da Seleção Espanhola", tamanhos: ['P', 'M', 'G'], ativo: true, precos: [280.78, 315.9, 339.99], categoria: "camisa", estoque: [3000, 4000, 10000], quantidade: 0, tamanho: []},
-  { id: 7, nome: "EUA", descricao: "Camisa da Seleção Americana", tamanhos: ['P', 'M', 'G'], ativo: true, precos: [259.9, 288.7, 329.99], categoria: "camisa", estoque: [4000, 2000, 8000], quantidade: 0, tamanho: []},
-  { id: 8, nome: "Itália", descricao: "Camisa da Seleção Italiana", tamanhos: ['P', 'M', 'G', 'GG'], ativo: true, precos: [239.70, 267.9, 378.7, 459.99], categoria: "camisa", estoque: [5000, 20000, 15000, 10000], quantidade: 0, tamanho: []},
-  { id: 9, nome: "Japão", descricao: "Camisa da Seleção Japonesa", tamanhos: ['P', 'M'], ativo: true, precos: [229.9, 269.99], categoria: "camisa", estoque: [2000, 4000], quantidade: 0, tamanho: []},
-  { id: 10, nome: "México", descricao: "Camisa da Seleção Mexicana", tamanhos: ['P', 'M', 'G'], ativo: true, precos: [245.9, 279.9, 329.9], categoria: "camisa", estoque: [1450, 3000, 5000], quantidade: 0, tamanho: []},
-  { id: 11, nome: "Portugal", descricao: "Camisa da Seleção Portuguesa", tamanhos: ['P', 'M', 'G', 'GG'], ativo: true, precos: [259.9, 299.99, 320.99, 365.8], categoria: "camisa", estoque: [4000, 3000 ,5000, 10000], quantidade: 0, tamanho: []},
-  { id: 12, nome: "Inglaterra", descricao: "Camisa da Seleção Inglesa", tamanhos: ['P', 'M', 'G'], ativo: true, precos: [210.15, 270, 329.99], categoria: "camisa", estoque: [5000, 12000, 15000], quantidade: 0, tamanho: []},
+  {id: 1, nome: "Álbum de Figurinhas", descricao: "Álbum de figurinhas da Copa do Mundo 2026 - Capa Dura Ouro", estoque: 20000, categoria: "album", preco: 139.9, ativo: true, quantidade: 0},
+  { id: 2, nome: "Brasil", descricao: "Camisa da Seleção Brasileira", tamanhos: ['P', 'M', 'G', 'GG'], estoque: [2000, 5000, 10000, 15000], preco: 339.9, categoria: "camisa", ativo: true, quantidade: 0, tamanho: ''},
+  { id: 3, nome: "Uruguai", descricao: "Camisa da Seleção do Uruguai", tamanhos: ['P', 'M', 'G', 'GG', 'G1'], estoque: [2000, 6000, 12000, 14000, 3000], ativo: true, preco: 272.6, categoria: "camisa", quantidade: 0, tamanho: ''},
+  { id: 4, nome: "Argentina", descricao: "Camisa da Seleção Argentina", tamanhos: ['P', 'M', 'G', 'GG', 'G1', 'G2'], ativo: true, preco: 329.99, estoque: [3000, 6000, 10000, 14000, 5000, 9000], categoria: "camisa", quantidade: 0, tamanho: ''},
+  { id: 5, nome: "Alemanha", descricao: "Camisa 2 da Seleção Alemã", tamanhos: ['P', 'M', 'G', 'GG'], ativo: true, estoque: [6000, 10000, 15000, 20000], preco: 489.9, categoria: "camisa", quantidade: 0, tamanho: ''},
+  { id: 6, nome: "Espanha", descricao: "Camisa da Seleção Espanhola", tamanhos: ['P', 'M', 'G'], ativo: true, preco: 399.99, categoria: "camisa", estoque: [3000, 4000, 10000], quantidade: 0, tamanho: ''},
+  { id: 7, nome: "EUA", descricao: "Camisa da Seleção Americana", tamanhos: ['P', 'M', 'G'], ativo: true, preco: 288.7, categoria: "camisa", estoque: [4000, 2000, 8000], quantidade: 0, tamanho: ''},
+  { id: 8, nome: "Itália", descricao: "Camisa da Seleção Italiana", tamanhos: ['P', 'M', 'G', 'GG'], ativo: true, preco: 378.8, categoria: "camisa", estoque: [5000, 20000, 15000, 10000], quantidade: 0, tamanho: ''},
+  { id: 9, nome: "Japão", descricao: "Camisa da Seleção Japonesa", tamanhos: ['P', 'M'], ativo: true, preco: 269.99, categoria: "camisa", estoque: [2000, 4000], quantidade: 0, tamanho: ''},
+  { id: 10, nome: "México", descricao: "Camisa da Seleção Mexicana", tamanhos: ['P', 'M', 'G'], ativo: true, preco: 279.9, categoria: "camisa", estoque: [1450, 3000, 5000], quantidade: 0, tamanho: ''},
+  { id: 11, nome: "Portugal", descricao: "Camisa da Seleção Portuguesa", tamanhos: ['P', 'M', 'G', 'GG'], ativo: true, preco: 320.99, categoria: "camisa", estoque: [4000, 3000 ,5000, 10000], quantidade: 0, tamanho: ''},
+  { id: 12, nome: "Inglaterra", descricao: "Camisa da Seleção Inglesa", tamanhos: ['P', 'M', 'G'], ativo: true, preco: 270.9, categoria: "camisa", estoque: [5000, 12000, 15000], quantidade: 0, tamanho: ''},
 
 
 ];
@@ -27,7 +27,6 @@ function renderizarProdutos() {
     
     if (!container) return;
     
-    let produtoHTML = '';
     let tamanhosHTML = '';
     container.innerHTML = '';
     
@@ -112,7 +111,7 @@ function getImagePorNome(nome) {
         'Portugal': 'camisaPortugal.avif',
         'Inglaterra': 'camisaInglaterra.avif'
     };
-
+    
     return images[nome] || 'placeholder.jpg';
 }
 
@@ -125,7 +124,7 @@ function comprar() {
     Swal.fire ({
         title: 'Perfeito!',
         text: `Preparando tudo para sua compra...
-            Direcionando para a página de finalização de compra.
+        Direcionando para a página de finalização de compra.
         `,
         icon: 'success',
         showConfirmButton: false
@@ -135,11 +134,80 @@ function comprar() {
     }, 1800);
 }
 
+function selecionarTamanho(tamProduto) {
+    const checkbox = document.querySelector(`input[name=${tamProduto[1]}]`);
+    const precoCarrinho = document.querySelector('.card_price_carrinho');
+
+    if(!precoCarrinho) return;
+
+    precoCarrinho.innerHTML = '';
+
+    let precoHTML = '';
+    let idProduto = tamProduto[0];
+    let produtoTam = tamProduto[1];
+
+    console.log(checkbox.checked);
+
+    if (checkbox.checked) {
+        produtos.forEach(produto => {
+            
+            let tamanhoExistente = false;
+
+            for (let i = 0; i < carrinho.length; i++) {
+                if(carrinho[i].tamanho == produtoTam[1]) {
+                    tamanhoExistente = true;
+                    break;
+                }
+            }
+            
+            console.log(tamProduto);
+            console.log(tamanhoExistente);
+
+            let indexTamanho = produto.tamanhos.indexOf(produtoTam);
+            let estoqueProduto = produto.estoque[indexTamanho];
+            if(produto.id == idProduto && estoqueProduto > 0 && !tamanhoExistente) {
+                produto.tamanho = produtoTam[1];
+                produto.estoque[indexTamanho]-=produto.quantidade;
+                precoHTML = 
+                `
+                    <span><h4> R$ ${(produto.tamanho*produto.preco).toFixed(2)}</h4></span>
+                `
+                    precoCarrinho.innerHTML += precoHTML;                    
+            } else {
+                Swal.fire ({
+                    title: 'Erro!',
+                    text: 'Tamanho fora de estoque.',
+                    icon: 'error',
+                    confirmButtonText: 'Ok', 
+                    confirmButtonColor: 'rgb(0, 150, 0)'
+                });
+                checkbox.checked = false;
+            }
+        });
+
+    } else {
+        carrinho.forEach(produto => {
+            let indexTamanhoExclusao = produto.tamanhos.indexOf(produtoTam)
+            produto.tamanho = '';
+            produto.estoque[indexTamanhoExclusao]+=produto.quantidade;
+            precoHTML = 
+            `
+                <span><h4> R$ ${(produto.tamanho[i][1]*produto.quantidade)}</h4></span>
+            `
+            precoCarrinho.innerHTML += precoHTML; 
+        })
+    }
+
+    return precoHTML;
+
+    
+}
+
 function adicionarAoCarrinho(idProduto) {
     let produtoEncontrado = false;
     let produtoCarrinho = false;
     
-    if(produto.length==0) {
+    if(carrinho.length==0) {
         
         for(let i = 0;i < produtos.length; i++) {
             let produto1 = produtos[i];
@@ -154,7 +222,10 @@ function adicionarAoCarrinho(idProduto) {
             if(parseInt(idProduto)==produto1.id && produto1.ativo==true && (produto1.categoria == "camisa" ? totalEstoque1>1 : produto1.estoque>1)) {
                 produtoEncontrado = true;
                 produto1.quantidade++;
-                produto.push(produto1);
+                if(produto1.tamanho) {
+                    selecionarTamanho();
+                }
+                carrinho.push(produto1);
                 salvarCarrinho();
                 
                 Swal.fire ({
@@ -170,8 +241,8 @@ function adicionarAoCarrinho(idProduto) {
         }
     } else {
         
-        for(let j = 0; j < produto.length; j++) {
-            let produto2 = produto[j];
+        for(let j = 0; j < carrinho.length; j++) {
+            let produto2 = carrinho[j];
             if(parseInt(idProduto) == produto2.id) {
                 Swal.fire ({
                     title:'Produto já adicionado!',
@@ -201,7 +272,11 @@ function adicionarAoCarrinho(idProduto) {
                 if(parseInt(idProduto) == produto3.id && produto3.ativo == true && (produto3.categoria == "camisa" ? totalEstoque2>1 : produto3.estoque>1)) {
                     produtoEncontrado = true;
                     produto3.quantidade++;
-                    produto.push(produto3);
+                    if(produto3.tamanho) {
+                        selecionarTamanho();
+                    }
+
+                    carrinho.push(produto3);
 
                     Swal.fire ({
                         title: 'Produto adicionado!',
@@ -231,7 +306,7 @@ function adicionarAoCarrinho(idProduto) {
 
 
 function limparCarrinho() {
-    produto = [];
+    carrinho = [];
     sessionStorage.removeItem('carrinho');
     calcularTotal();
     salvarCarrinho();
@@ -245,7 +320,7 @@ function renderizarCarrinho() {
 
     container.innerHTML = '';
 
-    if(produto.length === 0) {
+    if(carrinho.length === 0) {
         container.innerHTML += `
             <div id="message" class="container">
                 <h2>O carrinho está vazio...</h2>
@@ -258,7 +333,7 @@ function renderizarCarrinho() {
     /* ${carrinho[f].tamanhos ? `<p><b>Tamanhos:</b> ${carrinho[f].tamanhos.join(', ')}</p>`: '' } */
     
 
-    for(let f = 0; f < produto.length; f++) {
+    for(let f = 0; f < carrinho.length; f++) {
         
 //        <span><h2><b>R$ ${carrinho[f].preco.toFixed(2).replace('.', ',')}</b></h2></span>
         
@@ -266,23 +341,24 @@ function renderizarCarrinho() {
         <section class="produtoCarrinho">
             <article class="card_carrinho">
             <div class="card_description">
-               <img src="assets/img/${getImagePorNome(produto[f].nome)}" alt="${produto[f].nome}">
+               <img src="assets/img/${getImagePorNome(carrinho[f].nome)}" alt="${carrinho[f].nome}">
                 <div class="description_body"> 
-                    <p>${produto[f].descricao}</p>
+                    <p>${carrinho[f].descricao}</p>
+                    <p>${carrinho[f].tamanho ? carrinho[f].tamanho : ''}</p>
                 </div>
             </div>
 
             <div class="card_footer_carrinho">
                 <div class="card_price_carrinho"></div>
                 <div class="quantidade">
-                    <button onclick="maisProduto(${produto[f].id})" id="mais"></button>
-                    <p>${produto[f].quantidade}</p>
-                    <button onclick="menosProduto(${produto[f].id})" id="menos"></button>
+                    <button onclick="maisProduto(${carrinho[f].id})" id="mais"></button>
+                    <p>${carrinho[f].quantidade}</p>
+                    <button onclick="menosProduto(${carrinho[f].id})" id="menos"></button>
                 </div>
 
                 <div class="actionsProduto">
-                    <button onclick="excluirProduto(${produto[f].id})" id="excluirProdutoCarrinho">Excluir produto</button>
-                    <button onclick="resetProduto(${produto[f].id})" id="resetarProduto">Reset</button>
+                    <button onclick="excluirProduto(${carrinho[f].id})" id="excluirProdutoCarrinho">Excluir produto</button>
+                    <button onclick="resetProduto(${carrinho[f].id})" id="resetarProduto">Reset</button>
                 </div>
                 
             </article>
@@ -303,7 +379,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function maisProduto(idProdutoCarrinho) {
     
-    produto.forEach((produto) => {
+    carrinho.forEach((produto) => {
         if(produto.id == idProdutoCarrinho) {
             produto.quantidade++;
             salvarCarrinho();
@@ -319,7 +395,7 @@ function maisProduto(idProdutoCarrinho) {
 
 function menosProduto(idProdutoCarrinho) {
     
-    produto.forEach((produto) => {
+    carrinho.forEach((produto) => {
         if(produto.id == idProdutoCarrinho) {
             produto.quantidade > 1 ? produto.quantidade-- : produto.quantidade = 1;
             produto.estoque++;
@@ -338,10 +414,10 @@ function menosProduto(idProdutoCarrinho) {
 
 function excluirProduto(idCarrinhoExclusao) {
     
-    for (let i = 0; i < produto.length; i++) {
-        let exclusao = produto[i];
+    for (let i = 0; i < carrinho.length; i++) {
+        let exclusao = carrinho[i];
         if(exclusao.id==idCarrinhoExclusao) {
-            produto.splice(produto.indexOf(exclusao), 1);
+            carrinho.splice(carrinho.indexOf(exclusao), 1);
             salvarCarrinho();
             calcularTotal();
         }
@@ -353,77 +429,6 @@ function excluirProduto(idCarrinhoExclusao) {
     
 }
 
-function selecionarTamanho(tamProduto) {
-    const checkbox = document.querySelector(`input[name=${tamProduto[1]}]`);
-    const precoCarrinho = document.querySelector('.card_price_carrinho');
-
-    if(!precoCarrinho) return;
-
-    precoCarrinho.innerHTML = '';
-
-    let precoHTML = '';
-    let idProduto = tamProduto[0];
-    let produtoTam = tamProduto[1];
-    let preco = 0;
-
-    if (checkbox.checked) {
-        produto.forEach(produto => {
-            
-            let tamanhoExistente = false;
-
-            for (let i = 0; i < produto.tamanho.length; i++) {
-                if(produto.tamanho[i][0] == produtoTam) {
-                    tamanhoExistente = true;
-                    break;
-                }
-            }
-            
-            let indexTamanho = produto.tamanhos.indexOf(produtoTam);
-            let estoqueProduto = produto.estoque[indexTamanho];
-            if(produto.id == idProduto && estoqueProduto > 0 && !tamanhoExistente) {
-                produto.tamanho.push([produtoTam, produto.precos[indexTamanho]]);
-                produto.estoque[indexTamanho]--;
-                for (let i = 0; i < produto.tamanho.length; i++) {
-                    preco += (produto.tamanho[i][1]*produto.quantidade);    
-                }
-                precoHTML = 
-                `
-                    <span><h4> R$ ${preco.toFixed(2)}</h4></span>
-                `
-                    precoCarrinho.innerHTML += precoHTML;                    
-            } else {
-                Swal.fire ({
-                    title: 'Erro!',
-                    text: 'Tamanho fora de estoque.',
-                    icon: 'error',
-                    confirmButtonText: 'Ok', 
-                    confirmButtonColor: 'rgb(0, 150, 0)'
-                });
-                checkbox.checked = false;
-            }
-        });
-
-    } else {
-        produto.forEach(produto => {
-            let tamanhoExclusao = produto.tamanho.indexOf(produtoTam);
-            let indexTamanhoExclusao = produto.tamanhos.indexOf(produtoTam)
-            produto.tamanho.splice(tamanhoExclusao, 1);
-            produto.estoque[indexTamanhoExclusao]+=produto.quantidade;
-            for (let i = 0; i < produto.tamanho.length; i++) {
-                preco += (produto.tamanho[i][1]*produto.quantidade);    
-            }
-            precoHTML = 
-            `
-                <span><h4> R$ ${preco>0 ? preco.toFixed(2) : '-'}</h4></span>
-            `
-            precoCarrinho.innerHTML += precoHTML; 
-        })
-    }
-
-    return precoHTML;
-
-    
-}
 
 function calcularTotal() {
     const container = document.getElementById('carrinhoTotal');
@@ -449,7 +454,7 @@ function calcularTotal() {
         maximumFractionDigits: 2
     });
 
-    if(produto.length>0) {
+    if(carrinho.length>0) {
         totalHTML = `
             <div id="produtosTotal" class="container">
                 <h3><b>Total: </b></h3>
@@ -479,7 +484,7 @@ function resetProduto(idProduto) {
     
     /* const containerTamanhos = document.g */
 
-    produto.forEach((produto) => {
+    carrinho.forEach((produto) => {
         if(produto.id == idProduto) {
             produto.quantidade = 1;
             calcularTotal();
