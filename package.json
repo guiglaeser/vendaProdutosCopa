@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@supabase/supabase-js": "^2.105.4",
-    "node.js": "^0.0.1-security",
-    "sweetalert2": "^11.26.24"
-  }
-}
