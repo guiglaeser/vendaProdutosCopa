@@ -1,1 +1,1 @@
-echo 'SOFTKING'
+SOFTKING
